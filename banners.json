@@ -5,93 +5,9 @@
   },
   "gi": [
     {
-      "id": "auto_gi_43757141",
-      "name": "🎯 Take part in the event and get a chance to win Intertwined Fate ×10!",
-      "date": "2026-02-17",
-      "type": "event",
-      "auto": true
-    },
-    {
-      "id": "auto_gi_43224977",
-      "name": "🎯 The new limited-time web event \"Where the Moon Returns\" is now available.",
-      "date": "2026-01-28",
-      "type": "event",
-      "auto": true
-    },
-    {
-      "id": "auto_gi_43224975",
-      "name": "🎯 Version \"Luna IV\" Creator Incentive Program",
-      "date": "2026-02-11",
-      "type": "event",
-      "auto": true
-    },
-    {
-      "id": "auto_gi_43037530",
-      "name": "🎯 Take part in the event and get a chance to win Intertwined Fate ×10!",
-      "date": "2026-01-06",
-      "type": "event",
-      "auto": true
-    },
-    {
-      "id": "auto_gi_42879340",
-      "name": "🎯 Web Event \"Hilichurls' Machine Workshop\": Take Part to Obtain Primogems and Other In-Game Rewards",
-      "date": "2026-01-10",
-      "type": "event",
-      "auto": true
-    },
-    {
-      "id": "auto_gi_42863683",
-      "name": "🎯 The web event \"Mili 'Snow' Resort, Party in Wonderland!\": \"Party Challenge\" has been updated and is available for a limited time!",
-      "date": "2025-12-30",
-      "type": "event",
-      "auto": true
-    },
-    {
-      "id": "auto_gi_42424369",
-      "name": "🎯 Take part in the event and get a chance to win Intertwined Fate ×10!",
-      "date": "2025-11-25",
-      "type": "event",
-      "auto": true
-    },
-    {
-      "id": "auto_gi_41642972",
-      "name": "🎯 Take part in the event and get a chance to win Intertwined Fate ×10!",
-      "date": "2025-10-14",
-      "type": "event",
-      "auto": true
-    },
-    {
-      "id": "auto_gi_40984423",
-      "name": "🎯 Version \"Luna I\" Creator Incentive Program",
-      "date": "2025-10-08",
-      "type": "event",
-      "auto": true
-    },
-    {
-      "id": "auto_gi_40984420",
-      "name": "🎯 Phase II of \"It Starts in Nod-Krai\" Web Event - \"Journey Invitation\" is now on.",
-      "date": "2025-09-24",
-      "type": "event",
-      "auto": true
-    },
-    {
       "id": "auto_gi_40952505",
       "name": "🎯 Festival of the Welkin Moon Event 2: Create Stickers to Win Primogems!",
       "date": "2026-09-24",
-      "type": "event",
-      "auto": true
-    },
-    {
-      "id": "auto_gi_40795580",
-      "name": "🎯 The \"It Starts in Nod-Krai\" web event is now available for a limited time.",
-      "date": "2025-09-24",
-      "type": "event",
-      "auto": true
-    },
-    {
-      "id": "auto_gi_40790433",
-      "name": "🎯 Take part in the event and get a chance to win Intertwined Fate ×10!",
-      "date": "2025-09-02",
       "type": "event",
       "auto": true
     }
@@ -119,23 +35,9 @@
       "auto": true
     },
     {
-      "id": "auto_zzz_40174139",
-      "name": "🎯 HoYo FEST Social Media Check-in Event",
-      "date": "2025-07-28",
-      "type": "event",
-      "auto": true
-    },
-    {
       "id": "auto_zzz_40039150",
       "name": "🎯 [Prize Event] Tales of Midsummer Dreams | Unforgettable Moments",
       "date": "2026-07-23",
-      "type": "event",
-      "auto": true
-    },
-    {
-      "id": "auto_zzz_39802538",
-      "name": "🎯 [Prize Event] Participate in the event for a chance to obtain Master Tape ×10! ",
-      "date": "2025-07-06",
       "type": "event",
       "auto": true
     },
@@ -173,44 +75,8 @@
       "date": "2026-04-13",
       "type": "event",
       "auto": true
-    },
-    {
-      "id": "auto_zzz_37334215",
-      "name": "🎯 [Prize Event] Participate in the event for a chance to obtain Master Tape ×10!",
-      "date": "2026-03-02",
-      "type": "event",
-      "auto": true
-    },
-    {
-      "id": "auto_zzz_36524436",
-      "name": "🎯 Twitch Drops Incoming!",
-      "date": "2025-02-18",
-      "type": "event",
-      "auto": true
-    },
-    {
-      "id": "auto_zzz_36406047",
-      "name": "🎯 Should I Be the Stars of Lyra Web Event Is Now Live!",
-      "date": "2025-01-31",
-      "type": "event",
-      "auto": true
     }
   ],
-  "ww": [
-    {
-      "id": "auto_ww_Version%20",
-      "name": "🎴 Version 3.1",
-      "date": "2026-03-18",
-      "type": "banner",
-      "auto": true
-    },
-    {
-      "id": "auto_ww_Version%20",
-      "name": "🎴 Version 2.7",
-      "date": "2026-03-18",
-      "type": "banner",
-      "auto": true
-    }
-  ],
+  "ww": [],
   "ak": []
 }
