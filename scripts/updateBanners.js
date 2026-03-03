@@ -26,61 +26,63 @@ function extractTextFromContent(raw) {
   return cheerio.load(raw).text().replace(/\s+/g, ' ');
 }
 
-// ─── Universal Time Parsers ───
+// ─── Super Robust Time Parsers ───
 
-function parseGenshinTime(text) {
-  // Matches numerical formats: 2026/03/01, 2026-03-01, 2026.03.01 with various separators
-  const m = text.match(/(\d{4})[\/\.\-](\d{1,2})[\/\.\-](\d{1,2})\s*[\d:]*\s*[~～至\-–to]+\s*(\d{4})[\/\.\-](\d{1,2})[\/\.\-](\d{1,2})/i);
-  if (m) {
-    const pad = n => String(n).padStart(2, '0');
-    return { start: `${m[1]}-${pad(m[2])}-${pad(m[3])}`, end: `${m[4]}-${pad(m[5])}-${pad(m[6])}` };
-  }
-  return null;
-}
+function parseTime(text) {
+  const currentYear = new Date().getFullYear();
+  const pad = n => String(n).padStart(2, '0');
 
-function parseZZZTime(text) {
-  // Matches Chinese numerical formats: 2026年3月1日
-  const m = text.match(/(\d{4})年(\d{1,2})月(\d{1,2})日.{0,30}?(\d{1,2})月(\d{1,2})日/);
-  if (m) {
-    const pad = n => String(n).padStart(2, '0');
-    return { start: `${m[1]}-${pad(m[2])}-${pad(m[3])}`, end: `${m[1]}-${pad(m[4])}-${pad(m[5])}` };
-  }
-  return null;
-}
+  // 1. Standard YYYY/MM/DD or YYYY-MM-DD (e.g., 2024/08/20 - 2024/09/10)
+  const regexYYYYMMDD = /(\d{4})[\/\.\-](\d{1,2})[\/\.\-](\d{1,2}).{1,20}?(\d{4})[\/\.\-](\d{1,2})[\/\.\-](\d{1,2})/;
+  const m1 = text.match(regexYYYYMMDD);
+  if (m1) return { start: `${m1[1]}-${pad(m1[2])}-${pad(m1[3])}`, end: `${m1[4]}-${pad(m1[5])}-${pad(m1[6])}` };
 
-function parseEnglishTime(text) {
-  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  // Flexible regex matching: "August 28, 2024 - September 17, 2024", "Aug 28 2024 - Sep 17 2024", etc.
-  const regex = /([A-Z][a-z]+)\s+(\d{1,2})[,\s]+(\d{4})\s*[-–~to]+\s*([A-Z][a-z]+)\s+(\d{1,2})[,\s]+(\d{4})/i;
-  const m = text.match(regex);
-  if (m) {
-    const m1 = String(months.findIndex(x => m[1].toLowerCase().startsWith(x.toLowerCase())) + 1).padStart(2, '0');
-    const m2 = String(months.findIndex(x => m[4].toLowerCase().startsWith(x.toLowerCase())) + 1).padStart(2, '0');
-    if (m1 !== '00' && m2 !== '00') {
-      return { start: `${m[3]}-${m1}-${String(m[2]).padStart(2, '0')}`, end: `${m[6]}-${m2}-${String(m[5]).padStart(2, '0')}` };
-    }
-  }
+  // 2. American MM/DD/YYYY (e.g., 08/20/2024 - 09/10/2024)
+  const regexMMDDYYYY = /(\d{1,2})[\/\.\-](\d{1,2})[\/\.\-](\d{4}).{1,20}?(\d{1,2})[\/\.\-](\d{1,2})[\/\.\-](\d{4})/;
+  const m2 = text.match(regexMMDDYYYY);
+  // Assume m2[1] is month and m2[2] is day
+  if (m2) return { start: `${m2[3]}-${pad(m2[1])}-${pad(m2[2])}`, end: `${m2[6]}-${pad(m2[4])}-${pad(m2[5])}` };
   
-  // Fallback for short English formats: "Aug 28 - Sep 17" (assumes current year)
-  const shortRegex = /([A-Z][a-z]+)\s+(\d{1,2})\s*[-–~to]+\s*([A-Z][a-z]+)\s+(\d{1,2})/i;
-  const shortM = text.match(shortRegex);
-  if (shortM) {
-    const sm1 = String(months.findIndex(x => shortM[1].toLowerCase().startsWith(x.toLowerCase())) + 1).padStart(2, '0');
-    const sm2 = String(months.findIndex(x => shortM[3].toLowerCase().startsWith(x.toLowerCase())) + 1).padStart(2, '0');
-    if (sm1 !== '00' && sm2 !== '00') {
-      const year = new Date().getFullYear();
-      let endYear = year;
-      if (parseInt(sm2) < parseInt(sm1)) endYear++;
-      return { start: `${year}-${sm1}-${String(shortM[2]).padStart(2, '0')}`, end: `${endYear}-${sm2}-${String(shortM[4]).padStart(2, '0')}` };
-    }
+  // 3. English Written Dates (e.g., August 28, 2024 - September 17, 2024)
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const regexWritten = /([a-z]{3,})\s+(\d{1,2})[,\s]+(\d{4}).{1,20}?([a-z]{3,})\s+(\d{1,2})[,\s]+(\d{4})/i;
+  const m3 = text.match(regexWritten);
+  if (m3) {
+      const month1 = String(months.findIndex(x => m3[1].toLowerCase().startsWith(x.toLowerCase())) + 1).padStart(2, '0');
+      const month2 = String(months.findIndex(x => m3[4].toLowerCase().startsWith(x.toLowerCase())) + 1).padStart(2, '0');
+      if (month1 !== '00' && month2 !== '00') {
+          return { start: `${m3[3]}-${month1}-${pad(m3[2])}`, end: `${m3[6]}-${month2}-${pad(m3[5])}` };
+      }
+  }
+
+  // 4. Short English Written Dates (e.g., Aug 28 - Sep 17)
+  const regexShortWritten = /([a-z]{3,})\s+(\d{1,2}).{1,20}?([a-z]{3,})\s+(\d{1,2})/i;
+  const m4 = text.match(regexShortWritten);
+  if (m4) {
+      const month1 = String(months.findIndex(x => m4[1].toLowerCase().startsWith(x.toLowerCase())) + 1).padStart(2, '0');
+      const month2 = String(months.findIndex(x => m4[3].toLowerCase().startsWith(x.toLowerCase())) + 1).padStart(2, '0');
+      if (month1 !== '00' && month2 !== '00') {
+          let endYear = currentYear;
+          if (parseInt(month2) < parseInt(month1)) endYear++;
+          return { start: `${currentYear}-${month1}-${pad(m4[2])}`, end: `${endYear}-${month2}-${pad(m4[4])}` };
+      }
+  }
+
+  // 5. Chinese Dates (e.g., 2024年8月20日 - 2024年9月10日)
+  const regexCN = /(\d{4})年(\d{1,2})月(\d{1,2})日.{1,20}?(\d{4})年(\d{1,2})月(\d{1,2})日/;
+  const m5 = text.match(regexCN);
+  if (m5) return { start: `${m5[1]}-${pad(m5[2])}-${pad(m5[3])}`, end: `${m5[4]}-${pad(m5[5])}-${pad(m5[6])}` };
+
+  // 6. Short Chinese Dates (e.g., 8月20日 - 9月10日)
+  const regexShortCN = /(\d{1,2})月(\d{1,2})日.{1,20}?(\d{1,2})月(\d{1,2})日/;
+  const m6 = text.match(regexShortCN);
+  if (m6) {
+      let endYear = currentYear;
+      if (parseInt(m6[3]) < parseInt(m6[1])) endYear++;
+      return { start: `${currentYear}-${pad(m6[1])}-${pad(m6[2])}`, end: `${endYear}-${pad(m6[3])}-${pad(m6[4])}` };
   }
 
   return null;
-}
-
-// Attempts all parsers and returns the first valid result
-function extractTime(text) {
-  return parseGenshinTime(text) || parseEnglishTime(text) || parseZZZTime(text);
 }
 
 // ─── Per-game scrapers ───
@@ -105,12 +107,12 @@ async function parseGenshin() {
       const detail = await axios.get(`https://bbs-api-os.hoyolab.com/community/post/wapi/getPostFull?post_id=${pid}`, { headers: { ...BROWSER_HEADERS }, timeout: 15000 });
       const text = extractTextFromContent(detail.data?.data?.post?.post?.content || '');
       
-      const time = extractTime(text);
+      const time = parseTime(text);
       
       if (!time) { console.warn(`[GI] ⚠️ No date found in "${title}"`); continue; }
 
       results.push({ id: `auto_gi_${pid}`, name: `${isBanner ? '🎴' : '🎯'} ${title}`, date: time.end, type: isBanner ? 'banner' : 'event', auto: true });
-      log(`[GI] ✅ Added: "${title}"`);
+      log(`[GI] ✅ Added: "${title}" -> ends ${time.end}`);
     }
   } catch (e) { console.warn(`[GI] ❌ Scrape failed: ${e.message}`); }
   return results;
@@ -136,18 +138,17 @@ async function parseZZZ() {
       const detail = await axios.get(`https://bbs-api-os.hoyolab.com/community/post/wapi/getPostFull?post_id=${pid}`, { headers: { ...BROWSER_HEADERS }, timeout: 15000 });
       const text = extractTextFromContent(detail.data?.data?.post?.post?.content || '');
       
-      const time = extractTime(text);
+      const time = parseTime(text);
       
       if (!time) { console.warn(`[ZZZ] ⚠️ No date found in "${title}"`); continue; }
 
       results.push({ id: `auto_zzz_${pid}`, name: `${isBanner ? '🎴' : '🎯'} ${title}`, date: time.end, type: isBanner ? 'banner' : 'event', auto: true });
-      log(`[ZZZ] ✅ Added: "${title}"`);
+      log(`[ZZZ] ✅ Added: "${title}" -> ends ${time.end}`);
     }
   } catch (e) { console.warn(`[ZZZ] ❌ Scrape failed: ${e.message}`); }
   return results;
 }
 
-// Fandom (WW) and EndfieldTools (AK) remain unchanged...
 async function parseWW() {
   const results = [];
   try {
@@ -158,12 +159,12 @@ async function parseWW() {
     $('table').each((_, table) => {
       $(table).find('tr').each((_, tr) => {
         const text = $(tr).text().replace(/\s+/g, ' ').trim();
-        const time = extractTime(text);
+        const time = parseTime(text);
         if (time) {
           let title = $(tr).find('th, td, a, b').first().text().replace(/\n/g, '').trim();
           if (title && !title.includes('202') && title.length < 50) {
              results.push({ id: `auto_ww_${encodeURIComponent(title).substring(0, 10)}`, name: `🎴 ${title}`, date: time.end, type: 'banner', auto: true });
-             log(`[WW] ✅ Added: "${title}"`);
+             log(`[WW] ✅ Added: "${title}" -> ends ${time.end}`);
           }
         }
       });
@@ -184,23 +185,23 @@ async function parseAK() {
       const text = $(el).text().replace(/\s+/g, ' ').trim();
       if (text.length > 150) return;
       
-      const regex = /(.*?)\s*(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+(\d{1,2})\s*[-–~]\s*(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+(\d{1,2})/i;
-      const m = text.match(regex);
-      if (m) {
-        let title = m[1].replace(/^[-•·*]\s*/, '').replace(/[\.·•\s]+$/, '').trim();
+      const time = parseTime(text);
+      if (time) {
+        // EndfieldTools has the title right before the date in most elements
+        let titleMatch = text.match(/(.*?)(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/i);
+        let title = "Event";
+        if (titleMatch && titleMatch[1]) {
+           title = titleMatch[1].replace(/^[-•·*]\s*/, '').replace(/[\.·•\s]+$/, '').trim();
+        }
+
         if (title.length > 1 && title.length < 50 && !seen.has(title)) {
           seen.add(title);
-          const months = { jan:'01', feb:'02', mar:'03', apr:'04', may:'05', jun:'06', jul:'07', aug:'08', sep:'09', oct:'10', nov:'11', dec:'12' };
-          const endM = months[m[4].toLowerCase()];
-          const endD = String(m[5]).padStart(2, '0');
-          const year = new Date().getFullYear();
           const isBanner = title.toLowerCase().includes('banner') || title.toLowerCase().includes('headhunt');
-          
           results.push({
             id: `auto_ak_${encodeURIComponent(title).substring(0, 15)}`, name: `${isBanner ? '🎴' : '🧩'} ${title}`,
-            date: `${year}-${endM}-${endD}`, type: isBanner ? 'banner' : 'event', auto: true
+            date: time.end, type: isBanner ? 'banner' : 'event', auto: true
           });
-          log(`[AK] ✅ Added: "${title}"`);
+          log(`[AK] ✅ Added: "${title}" -> ends ${time.end}`);
         }
       }
     });
