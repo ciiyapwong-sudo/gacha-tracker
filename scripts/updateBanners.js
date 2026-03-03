@@ -40,7 +40,6 @@ function parseTime(text) {
   // 2. American MM/DD/YYYY (e.g., 08/20/2024 - 09/10/2024)
   const regexMMDDYYYY = /(\d{1,2})[\/\.\-](\d{1,2})[\/\.\-](\d{4}).{1,20}?(\d{1,2})[\/\.\-](\d{1,2})[\/\.\-](\d{4})/;
   const m2 = text.match(regexMMDDYYYY);
-  // Assume m2[1] is month and m2[2] is day
   if (m2) return { start: `${m2[3]}-${pad(m2[1])}-${pad(m2[2])}`, end: `${m2[6]}-${pad(m2[4])}-${pad(m2[5])}` };
   
   // 3. English Written Dates (e.g., August 28, 2024 - September 17, 2024)
@@ -108,7 +107,6 @@ async function parseGenshin() {
       const text = extractTextFromContent(detail.data?.data?.post?.post?.content || '');
       
       const time = parseTime(text);
-      
       if (!time) { console.warn(`[GI] ⚠️ No date found in "${title}"`); continue; }
 
       results.push({ id: `auto_gi_${pid}`, name: `${isBanner ? '🎴' : '🎯'} ${title}`, date: time.end, type: isBanner ? 'banner' : 'event', auto: true });
@@ -139,7 +137,6 @@ async function parseZZZ() {
       const text = extractTextFromContent(detail.data?.data?.post?.post?.content || '');
       
       const time = parseTime(text);
-      
       if (!time) { console.warn(`[ZZZ] ⚠️ No date found in "${title}"`); continue; }
 
       results.push({ id: `auto_zzz_${pid}`, name: `${isBanner ? '🎴' : '🎯'} ${title}`, date: time.end, type: isBanner ? 'banner' : 'event', auto: true });
@@ -152,21 +149,35 @@ async function parseZZZ() {
 async function parseWW() {
   const results = [];
   try {
+    log('[WW] Fetching Fandom API...');
     const url = 'https://wutheringwaves.fandom.com/api.php?action=parse&page=Convene&format=json&prop=text';
     const res = await axios.get(url, { headers: { ...BROWSER_HEADERS }, timeout: 15000 });
     const $ = cheerio.load(res.data?.parse?.text?.['*'] || '');
 
     $('table').each((_, table) => {
       $(table).find('tr').each((_, tr) => {
-        const text = $(tr).text().replace(/\s+/g, ' ').trim();
-        const time = parseTime(text);
-        if (time) {
-          let title = $(tr).find('th, td, a, b').first().text().replace(/\n/g, '').trim();
-          if (title && !title.includes('202') && title.length < 50) {
-             results.push({ id: `auto_ww_${encodeURIComponent(title).substring(0, 10)}`, name: `🎴 ${title}`, date: time.end, type: 'banner', auto: true });
-             log(`[WW] ✅ Added: "${title}" -> ends ${time.end}`);
+          let rowText = '';
+          $(tr).find('td, th').each((_, td) => {
+              rowText += $(td).text() + ' ';
+          });
+          rowText = rowText.replace(/\s+/g, ' ').trim();
+
+          const time = parseTime(rowText);
+          if (time) {
+            // Fandom WW Convene table structure typically places the exact banner name inside a bold tag or a specific link 
+            // inside the row. We will try to extract all readable string text before the dates
+            let possibleTitle = $(tr).find('b, a[title]').first().text().trim();
+            
+            // Fallback: If no bold text or link, just use the first column text
+            if(!possibleTitle || possibleTitle.length < 3) {
+                possibleTitle = $(tr).find('td').first().text().replace(/\n/g, '').trim();
+            }
+            
+            if (possibleTitle && !possibleTitle.includes('202') && possibleTitle.length > 2 && possibleTitle.length < 60) {
+               results.push({ id: `auto_ww_${encodeURIComponent(possibleTitle).substring(0, 10)}`, name: `🎴 ${possibleTitle}`, date: time.end, type: 'banner', auto: true });
+               log(`[WW] ✅ Added: "${possibleTitle}" -> ends ${time.end}`);
+            }
           }
-        }
       });
     });
   } catch (e) { console.warn(`[WW] ❌ Scrape failed: ${e.message}`); }
@@ -187,7 +198,6 @@ async function parseAK() {
       
       const time = parseTime(text);
       if (time) {
-        // EndfieldTools has the title right before the date in most elements
         let titleMatch = text.match(/(.*?)(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/i);
         let title = "Event";
         if (titleMatch && titleMatch[1]) {
