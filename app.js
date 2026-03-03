@@ -137,48 +137,15 @@ function getAllGames() {
 }
 
 // ════════════════════════════════════════════
-// ── DATA: AUTO_BANNERS & EVENTS (Hardcoded) ──
+// ── DATA: AUTO_BANNERS — loaded from banners.json at startup ──
 // ════════════════════════════════════════════
 
 /** @type {Record<string, GameEvent[]>} */
-const AUTO_BANNERS = {
-  ww: [
-    { id: 'auto_ww_luuk', name: '🎴 卢克·赫尔森（新）', date: '2026-03-18', type: 'banner', auto: true, desc: '5星声骸共鸣者，冰属性剑士。与加尔布雷纳同期上线，是3.1二期主角。', rewards: ['限定5星角色', '武器唤取同期开放'] },
-    { id: 'auto_ww_galbrena', name: '🎴 加尔布雷纳（复刻）', date: '2026-03-18', type: 'banner', auto: true, desc: '加尔布雷纳首次复刻，错过初次的玩家的机会。', rewards: ['限定5星角色复刻'] },
-    { id: 'auto_ww_ev_stars', name: '🌟 繁星汇聚之处', date: '2026-03-18', type: 'event', auto: true, desc: '主要活动，包含纸牌对战、调酒模拟等多种小游戏。完成各关卡获取奖励。', rewards: ['星声×800', '高级调谐器', '修改器'] },
-    { id: 'auto_ww_ev_frozen', name: '🧊 未解冻的足迹', date: '2026-03-18', type: 'event', auto: true, desc: '探索罗亚冰原地表，寻找6处时间痕迹并拍摄指定地点完成收集任务。', rewards: ['星声×500', '调谐器'] },
-    { id: 'auto_ww_ev_signin', name: '📅 无言的美好祝愿（签到）', date: '2026-03-19', type: 'event', auto: true, desc: '2月17日至3月19日期间每日登录即可领取奖励，通过游戏内邮件分批发放。', rewards: ['星声×1600', '限定头像「来，笑一个」'] },
-    { id: 'auto_ww_ev_rein', name: '🚧 撤退！迁徙大混乱', date: '2026-03-18', type: 'event', auto: true, desc: '休闲益智活动，在格子内放置障碍物阻止异骸群离开区域，类似棋盘游戏。', rewards: ['星声×400', '调谐器'] },
-  ],
-  ak: [
-    { id: 'auto_ak_yvonne', name: '🎴 伊冯（新）', date: '2026-03-12', type: 'banner', auto: true, desc: '终末地1.0限定新干员，「热情的色调」系列主角，6星稀有度。', rewards: ['限定6星干员', '武器同期开放'] },
-    { id: 'auto_ak_ev_delver', name: '🧩 隐秘之物的探寻者', date: '2026-03-12', type: 'event', auto: true, desc: '1.0版本主要活动，配合伊冯剧情展开的解谜探索关卡。', rewards: ['合成玉', '招募凭证', '材料'] },
-    { id: 'auto_ak_ev_spring', name: '🌸 春日短笺', date: '2026-03-04', type: 'event', auto: true, desc: '春节主题活动，限时收集奖励。注意截止日期较早，请尽快完成！', rewards: ['合成玉', '限定春节道具'] },
-    { id: 'auto_ak_ev_voyage', name: '🚀 航向星辰', date: '2026-03-12', type: 'event', auto: true, desc: '完成主线第三章第三幕「The Star That Voyages Far」后可解锁并领取奖励。', rewards: ['合成玉', '6星干员自选券'] },
-  ],
-  gi: [
-    { id: 'auto_gi_varka', name: '🎴 瓦尔卡（新）', date: '2026-03-17', type: 'banner', auto: true, desc: '蒙德骑士团团长，6.4版本全新5星角色，配合主线回归蒙德剧情登场。', rewards: ['限定5星角色', '武器祈愿同期开放'] },
-    { id: 'auto_gi_flins', name: '🎴 弗林斯（复刻）', date: '2026-03-17', type: 'banner', auto: true, desc: '弗林斯与瓦尔卡同期复刻上线。', rewards: ['限定5星角色复刻'] },
-    { id: 'auto_gi_chronicled', name: '🎴 蒙德传记祈愿', date: '2026-03-17', type: 'banner', auto: true, desc: '传记祈愿，蒙德系列限定角色与武器可选。', rewards: ['限定角色/武器自选'] },
-    { id: 'auto_gi_ev_homeward', name: '🏰 归家吧，乘风而来的人', date: '2026-03-16', type: 'event', auto: true, desc: '6.4主活动，由骑士团主办。含摄影、调酒、猎鹰飞行射击、骑士影阵战斗4个子活动。完成可获得全催化剂通用4星武器皮肤。', rewards: ['原石', '4星法器皮肤（全催化剂通用）', '大英雄的经验', '摩拉'] },
-    { id: 'auto_gi_ev_temper', name: '⚔️ 磨砺以须，行将远征·二期', date: '2026-03-17', type: 'event', auto: true, desc: '完成相关活动可解锁已拥有角色的新命座，适合喜欢角色自定义的旅行者。', rewards: ['角色新命座', '原石'] },
-    { id: 'auto_gi_ev_sightseeing', name: '📸 与好友同游', date: '2026-03-17', type: 'event', auto: true, desc: '在提瓦特大陆各地拍摄著名地标，拼接成风景画。Bongo-Head等老朋友也会出现。', rewards: ['原石', '摩拉'] },
-    { id: 'auto_gi_ev_stygian', name: '👹 幽冥突袭', date: '2026-03-17', type: 'event', auto: true, desc: '限时Boss连战挑战，极难难度完成可获得4星稀有度武器皮肤（需指定队伍）。', rewards: ['原石', '4星武器皮肤（极难·指定队）'] },
-    { id: 'auto_gi_ev_leyline', name: '💎 丰饶之源·地脉溢流', date: '2026-03-10', type: 'event', auto: true, desc: '使用树脂进行地脉相关挑战可获得双倍奖励。注意截止日期较早！', rewards: ['双倍角色/武器突破材料'] },
-  ],
-  zzz: [
-    { id: 'auto_zzz_aria', name: '🎴 阿莉娅（新）', date: '2026-03-24', type: 'banner', auto: true, desc: '天使幻觉偶像团成员，S级以太属性代理人，2.6二期主要限定角色。', rewards: ['限定S级代理人', 'W引擎同期开放'] },
-    { id: 'auto_zzz_yuzuha', name: '🎴 柚叶（复刻）', date: '2026-03-24', type: 'banner', auto: true, desc: '柚叶与阿莉娅同期复刻，错过初次的代理人的好机会。', rewards: ['限定S级代理人复刻'] },
-    { id: 'auto_zzz_ev_harmony', name: '🎵 幻觉和声', date: '2026-03-24', type: 'event', auto: true, desc: '2.6旗舰活动，分三部分：光辉旋律与独奏（音游）、演出对决（音游+战斗混合）、大马歇尔冒险（地图探索）。可获得活动专属服装，需完成主线第一章序章。', rewards: ['活动专属服装', '多色素×500+', 'HIA俱乐部通行证', '以太电池'] },
-    { id: 'auto_zzz_ev_login', name: '📅 幻觉特别登录（10连抽）', date: '2026-03-24', type: 'event', auto: true, desc: '登录游戏累计7天即可获得加密母带×10（即10连抽）。每天登录即可，奖励通过邮件发送。', rewards: ['加密母带×10（10连抽）'] },
-    { id: 'auto_zzz_ev_gilded', name: '🧧 镀金惊喜·美妙邦邦', date: '2026-03-24', type: 'event', auto: true, desc: '金胡萝卜节庆典，在新艾利都跳跃与朋友互动领取红包，获取珍贵道具。需完成主线序章。', rewards: ['多色素', '织造镀金礼盒', '30天信任会员（节庆版）'] },
-    { id: 'auto_zzz_ev_threshold', name: '⚡ 门限模拟：无尽炼狱', date: '2026-03-24', type: 'event', auto: true, desc: '高难战斗挑战，3个战斗节点+2个剧情节点，加入新敌人和新条件。需完成「迷失的猫咪与委托人」章节。', rewards: ['多色素', '代理人突破材料', '驱动盘碎片'] },
-  ],
-};
+const AUTO_BANNERS = { ww: [], ak: [], gi: [], zzz: [] };
 
 /** @type {Record<string, GameEvent>} */
 const EVENT_DETAIL_MAP = {};
-Object.values(AUTO_BANNERS).flat().forEach(e => { EVENT_DETAIL_MAP[e.id] = e; });
+// NOTE: populated inside fetch().then() below, after banners.json has loaded
 
 // ── Event detail (inline) ──
 /**
@@ -263,11 +230,35 @@ function getServerNow() {
 }
 /** @returns {string} ISO date string YYYY-MM-DD */
 function getResetDate() {
-  const now = new Date();
+  const now = getServerNow();
   const reset = new Date(now);
   reset.setHours(4, 0, 0, 0);
   if (now < reset) reset.setDate(reset.getDate() - 1);
   return reset.toISOString().split('T')[0];
+}
+
+/** 
+ * Automatically deducts a specified number of days from monthly card tracking values
+ * @param {string} profileKey The 'profile_gid' key in state
+ * @param {number} daysPassed Number of days since last reset
+ * @param {Object} keptState The state object where the profile holds data
+ */
+function deductMonthlyCard(profileKey, daysPassed, keptState) {
+  if (daysPassed <= 0) return;
+  const gid = profileKey.slice('profile_'.length);
+  const game = getAllGames().all.find(x => x.id === gid);
+  const def = (game && game.profileDef) ? game.profileDef : { monthly: '月卡' };
+  const profile = keptState[profileKey];
+
+  if (profile && Array.isArray(profile.stats)) {
+    profile.stats.forEach(s => {
+      if (s.label && s.label.includes(def.monthly)) {
+        s.value = String(s.value).replace(/\d+/, match => {
+          return Math.max(0, parseInt(match, 10) - daysPassed).toString();
+        });
+      }
+    });
+  }
 }
 
 /** Loads persisted state from localStorage, resets daily keys on new day */
@@ -277,6 +268,18 @@ function loadState() {
   if (state._date !== today) {
     const kept = {};
     const weekKey = getWeekKey();
+
+    // Calculate days passed for monthly card deduction
+    let daysPassed = 1;
+    if (state._date) {
+      const oldD = new Date(state._date + 'T04:00:00').getTime();
+      const newD = new Date(today + 'T04:00:00').getTime();
+      daysPassed = Math.round((newD - oldD) / 86400000);
+      if (daysPassed < 1) daysPassed = 1;
+    } else {
+      daysPassed = 0; // First time init, don't deduct
+    }
+
     getAllGames().all.forEach(g => {
       ['events_', '_collapsed_'].forEach(p => {
         if (state[p + g.id] !== undefined) kept[p + g.id] = state[p + g.id];
@@ -295,7 +298,13 @@ function loadState() {
       if (k === '_customGames' || k.startsWith('events_') || k.startsWith('abyss_') || k.startsWith('cyclic_') || k.endsWith('_start')
         || k.startsWith('custom_daily_') || k.startsWith('custom_weekly_')
         || k.startsWith('hidden_daily_') || k.startsWith('hidden_weekly_')
-        || k.startsWith('profile_')) kept[k] = state[k];
+        || k.startsWith('profile_')) {
+
+        kept[k] = state[k];
+        if (k.startsWith('profile_')) {
+          deductMonthlyCard(k, daysPassed, kept);
+        }
+      }
     });
     // Preserve weekly check state for custom weekly tasks across day resets
     Object.keys(state).forEach(k => {
@@ -370,10 +379,18 @@ function resetAll() {
     }
   });
   Object.keys(state).forEach(k => {
-    if (k === '_customGames' || k.startsWith('events') || k.startsWith('abyss_') || k.startsWith('cyclic_') || k.endsWith('_start')
+    if (k === '_customGames' || k.startsWith('events_') || k.startsWith('abyss_') || k.startsWith('cyclic_') || k.endsWith('_start')
       || k.startsWith('custom_daily_') || k.startsWith('custom_weekly_')
       || k.startsWith('hidden_daily_') || k.startsWith('hidden_weekly_')
-      || k.startsWith('profile_')) kept[k] = state[k];
+      || k.startsWith('profile_')) {
+
+      kept[k] = state[k];
+
+      // On manual reset all, deduct exactly 1 day
+      if (k.startsWith('profile_')) {
+        deductMonthlyCard(k, 1, kept);
+      }
+    }
   });
   Object.keys(state).forEach(k => {
     if (k.startsWith('w_') && !kept[k]) kept[k] = state[k];
@@ -1419,10 +1436,22 @@ function updateResetTimer() {
 setInterval(updateResetTimer, 1000);
 
 // ── Init ──
-loadState();
-mergeAutoBanners();
-saveState();
-render();
+fetch('banners.json')
+  .then(r => r.json())
+  .then(data => {
+    ['gi', 'zzz', 'ww', 'ak'].forEach(gid => {
+      if (Array.isArray(data[gid])) AUTO_BANNERS[gid] = data[gid];
+    });
+    // Populate EVENT_DETAIL_MAP now that AUTO_BANNERS has real data
+    Object.values(AUTO_BANNERS).flat().forEach(e => { EVENT_DETAIL_MAP[e.id] = e; });
+  })
+  .catch(() => { /* silently keep hardcoded fallback */ })
+  .finally(() => {
+    loadState();
+    mergeAutoBanners();
+    saveState();
+    render();
+  });
 updateDate();
 updateResetTimer();
 
@@ -1484,4 +1513,6 @@ setInterval(() => {
 // ── PATCH REMINDER SYSTEM
 // ══════════════════════════════════════════════════════
 
-
+window.state = state;
+window.saveState = saveState;
+window.render = render;
