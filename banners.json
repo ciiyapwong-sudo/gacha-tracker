@@ -12,6 +12,13 @@
       "auto": true
     },
     {
+      "id": "auto_gi_43224975",
+      "name": "🎯 Version \"Luna IV\" Creator Incentive Program",
+      "date": "2026-02-11",
+      "type": "event",
+      "auto": true
+    },
+    {
       "id": "auto_gi_42879340",
       "name": "🎯 Web Event \"Hilichurls' Machine Workshop\": Take Part to Obtain Primogems and Other In-Game Rewards",
       "date": "2026-01-10",
@@ -24,9 +31,44 @@
       "date": "2025-12-30",
       "type": "event",
       "auto": true
+    },
+    {
+      "id": "auto_gi_40984423",
+      "name": "🎯 Version \"Luna I\" Creator Incentive Program",
+      "date": "2025-10-08",
+      "type": "event",
+      "auto": true
+    },
+    {
+      "id": "auto_gi_40952505",
+      "name": "🎯 Festival of the Welkin Moon Event 2: Create Stickers to Win Primogems!",
+      "date": "2026-09-24",
+      "type": "event",
+      "auto": true
     }
   ],
   "zzz": [
+    {
+      "id": "auto_zzz_42831723",
+      "name": "🎯 [Prize Event] Participate in the event for a chance to win Master Tape ×10 or a Ye Shunguang standee! ",
+      "date": "2026-12-21",
+      "type": "event",
+      "auto": true
+    },
+    {
+      "id": "auto_zzz_41430175",
+      "name": "🎯 [Prize Event] Participate in the event for a chance to obtain Master Tape ×10! ",
+      "date": "2026-10-01",
+      "type": "event",
+      "auto": true
+    },
+    {
+      "id": "auto_zzz_40670972",
+      "name": "🎯 [Prize Event] Participate in the event for a chance to obtain Master Tape ×10! ",
+      "date": "2026-08-24",
+      "type": "event",
+      "auto": true
+    },
     {
       "id": "auto_zzz_40174139",
       "name": "🎯 HoYo FEST Social Media Check-in Event",
@@ -35,9 +77,58 @@
       "auto": true
     },
     {
+      "id": "auto_zzz_40039150",
+      "name": "🎯 [Prize Event] Tales of Midsummer Dreams | Unforgettable Moments",
+      "date": "2026-07-23",
+      "type": "event",
+      "auto": true
+    },
+    {
       "id": "auto_zzz_39802538",
       "name": "🎯 [Prize Event] Participate in the event for a chance to obtain Master Tape ×10! ",
       "date": "2025-07-06",
+      "type": "event",
+      "auto": true
+    },
+    {
+      "id": "auto_zzz_39193996",
+      "name": "🎯 [Prize Event] Today's Discovery",
+      "date": "2026-06-13",
+      "type": "event",
+      "auto": true
+    },
+    {
+      "id": "auto_zzz_38930673",
+      "name": "🎯 [Prize Event] Participate in the Event for a Chance to Win Master Tape ×10 or a Bangboo Plushie!",
+      "date": "2026-05-25",
+      "type": "event",
+      "auto": true
+    },
+    {
+      "id": "auto_zzz_38480645",
+      "name": "🎯 [Prize Event] An Exclusive Bouquet for Proxies",
+      "date": "2026-05-07",
+      "type": "event",
+      "auto": true
+    },
+    {
+      "id": "auto_zzz_38169536",
+      "name": "🎯 [Prize Event] Participate in the event for a chance to obtain Master Tape ×10!",
+      "date": "2026-04-13",
+      "type": "event",
+      "auto": true
+    },
+    {
+      "id": "auto_zzz_37334215",
+      "name": "🎯 [Prize Event] Participate in the event for a chance to obtain Master Tape ×10!",
+      "date": "2026-03-02",
+      "type": "event",
+      "auto": true
+    },
+    {
+      "id": "auto_zzz_36524436",
+      "name": "🎯 Twitch Drops Incoming!",
+      "date": "2025-02-18",
       "type": "event",
       "auto": true
     },
