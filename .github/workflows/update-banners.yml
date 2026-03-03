@@ -22,7 +22,7 @@ jobs:
         run: npm install
 
       - name: Run scraper
-        run: node scripts/updateBanners.js
+        run: node scripts/updateBanners.js --verbose
 
       - name: Commit if changed
         run: |
