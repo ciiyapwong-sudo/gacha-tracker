@@ -48,7 +48,7 @@ function parseAKTime(text) {
 
 // ─── Per-game parsers ────────────────────────────────────────────────
 // Each parser: scrapes the game's news/announcement page
-// Returns array of { id, name, date, type, auto }
+// Returns array of { id, name, date, type, auto, desc, rewards }
 
 async function parseGenshin() {
   const results = [];
@@ -79,11 +79,13 @@ async function parseGenshin() {
       if (!time) { console.warn(`GI: no time in "${title}"`); continue; }
 
       results.push({
-        id:   `auto_gi_${pid}`,
-        name: `${isBanner ? '🎴' : '🎯'} ${title}`,
-        date: time.end,
-        type: isBanner ? 'banner' : 'event',
-        auto: true
+        id:      `auto_gi_${pid}`,
+        name:    `${isBanner ? '🎴' : '🎯'} ${title}`,
+        date:    time.end,
+        type:    isBanner ? 'banner' : 'event',
+        auto:    true,
+        desc:    '',
+        rewards: []
       });
     }
   } catch (e) {
@@ -118,11 +120,13 @@ async function parseZZZ() {
       if (!time) { console.warn(`ZZZ: no time in "${title}"`); continue; }
 
       results.push({
-        id:   `auto_zzz_${pid}`,
-        name: `${isBanner ? '🎴' : '🎯'} ${title}`,
-        date: time.end,
-        type: isBanner ? 'banner' : 'event',
-        auto: true
+        id:      `auto_zzz_${pid}`,
+        name:    `${isBanner ? '🎴' : '🎯'} ${title}`,
+        date:    time.end,
+        type:    isBanner ? 'banner' : 'event',
+        auto:    true,
+        desc:    '',
+        rewards: []
       });
     }
   } catch (e) {
@@ -153,11 +157,13 @@ async function parseWW() {
       if (!time) { console.warn(`WW: no time in "${title}"`); continue; }
 
       results.push({
-        id:   `auto_ww_${item.id}`,
-        name: `${isBanner ? '🎴' : '🌟'} ${title}`,
-        date: time.end,
-        type: isBanner ? 'banner' : 'event',
-        auto: true
+        id:      `auto_ww_${item.id}`,
+        name:    `${isBanner ? '🎴' : '🌟'} ${title}`,
+        date:    time.end,
+        type:    isBanner ? 'banner' : 'event',
+        auto:    true,
+        desc:    '',
+        rewards: []
       });
     }
   } catch (e) {
@@ -183,11 +189,13 @@ async function parseAK() {
       if (!time) continue;
 
       results.push({
-        id:   `auto_ak_${item.id}`,
-        name: `${isBanner ? '🎴' : '🧩'} ${title}`,
-        date: time.end,
-        type: isBanner ? 'banner' : 'event',
-        auto: true
+        id:      `auto_ak_${item.id}`,
+        name:    `${isBanner ? '🎴' : '🧩'} ${title}`,
+        date:    time.end,
+        type:    isBanner ? 'banner' : 'event',
+        auto:    true,
+        desc:    '',
+        rewards: []
       });
     }
   } catch (e) {
