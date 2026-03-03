@@ -1,0 +1,29 @@
+{
+  "_meta": {
+    "updated": "2026-03-03",
+    "patch": "WW 3.1 / AK 1.0 / GI 6.4 / ZZZ 2.6"
+  },
+  "ww": [
+    { "id": "auto_ww_luuk", "name": "🎴 卢克·赫尔森（新）", "date": "2026-03-18", "type": "banner", "auto": true },
+    { "id": "auto_ww_galbrena", "name": "🎴 加尔布雷纳（复刻）", "date": "2026-03-18", "type": "banner", "auto": true },
+    { "id": "auto_ww_ev_stars", "name": "🌟 繁星汇聚之处", "date": "2026-03-18", "type": "event", "auto": true },
+    { "id": "auto_ww_ev_signin", "name": "📅 无言的美好祝愿（签到）", "date": "2026-03-19", "type": "event", "auto": true }
+  ],
+  "ak": [
+    { "id": "auto_ak_yvonne", "name": "🎴 伊冯（新）", "date": "2026-03-12", "type": "banner", "auto": true },
+    { "id": "auto_ak_ev_delver", "name": "🧩 隐秘之物的探寻者", "date": "2026-03-12", "type": "event", "auto": true },
+    { "id": "auto_ak_ev_spring", "name": "🌸 春日短笺", "date": "2026-03-04", "type": "event", "auto": true }
+  ],
+  "gi": [
+    { "id": "auto_gi_varka", "name": "🎴 瓦尔卡（新）", "date": "2026-03-17", "type": "banner", "auto": true },
+    { "id": "auto_gi_flins", "name": "🎴 弗林斯（复刻）", "date": "2026-03-17", "type": "banner", "auto": true },
+    { "id": "auto_gi_ev_homeward", "name": "🏰 归家吧，乘风而来的人", "date": "2026-03-16", "type": "event", "auto": true },
+    { "id": "auto_gi_ev_leyline", "name": "💎 丰饶之源·地脉溢流", "date": "2026-03-10", "type": "event", "auto": true }
+  ],
+  "zzz": [
+    { "id": "auto_zzz_aria", "name": "🎴 阿莉娅（新）", "date": "2026-03-24", "type": "banner", "auto": true },
+    { "id": "auto_zzz_yuzuha", "name": "🎴 柚叶（复刻）", "date": "2026-03-24", "type": "banner", "auto": true },
+    { "id": "auto_zzz_ev_harmony", "name": "🎵 幻觉和声", "date": "2026-03-24", "type": "event", "auto": true },
+    { "id": "auto_zzz_ev_login", "name": "📅 幻觉特别登录（10连抽）", "date": "2026-03-24", "type": "event", "auto": true }
+  ]
+}
