@@ -32,17 +32,17 @@ function parseTime(text) {
   const currentYear = new Date().getFullYear();
   const pad = n => String(n).padStart(2, '0');
 
-  // 1. Standard YYYY/MM/DD or YYYY-MM-DD (e.g., 2024/08/20 - 2024/09/10)
+  // 1. Standard YYYY/MM/DD or YYYY-MM-DD
   const regexYYYYMMDD = /(\d{4})[\/\.\-](\d{1,2})[\/\.\-](\d{1,2}).{1,20}?(\d{4})[\/\.\-](\d{1,2})[\/\.\-](\d{1,2})/;
   const m1 = text.match(regexYYYYMMDD);
   if (m1) return { start: `${m1[1]}-${pad(m1[2])}-${pad(m1[3])}`, end: `${m1[4]}-${pad(m1[5])}-${pad(m1[6])}` };
 
-  // 2. American MM/DD/YYYY (e.g., 08/20/2024 - 09/10/2024)
+  // 2. American MM/DD/YYYY
   const regexMMDDYYYY = /(\d{1,2})[\/\.\-](\d{1,2})[\/\.\-](\d{4}).{1,20}?(\d{1,2})[\/\.\-](\d{1,2})[\/\.\-](\d{4})/;
   const m2 = text.match(regexMMDDYYYY);
   if (m2) return { start: `${m2[3]}-${pad(m2[1])}-${pad(m2[2])}`, end: `${m2[6]}-${pad(m2[4])}-${pad(m2[5])}` };
   
-  // 3. English Written Dates (e.g., August 28, 2024 - September 17, 2024)
+  // 3. English Written Dates
   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   const regexWritten = /([a-z]{3,})\s+(\d{1,2})[,\s]+(\d{4}).{1,20}?([a-z]{3,})\s+(\d{1,2})[,\s]+(\d{4})/i;
   const m3 = text.match(regexWritten);
@@ -54,7 +54,7 @@ function parseTime(text) {
       }
   }
 
-  // 4. Short English Written Dates (e.g., Aug 28 - Sep 17)
+  // 4. Short English Written Dates
   const regexShortWritten = /([a-z]{3,})\s+(\d{1,2}).{1,20}?([a-z]{3,})\s+(\d{1,2})/i;
   const m4 = text.match(regexShortWritten);
   if (m4) {
@@ -67,12 +67,12 @@ function parseTime(text) {
       }
   }
 
-  // 5. Chinese Dates (e.g., 2024年8月20日 - 2024年9月10日)
+  // 5. Chinese Dates
   const regexCN = /(\d{4})年(\d{1,2})月(\d{1,2})日.{1,20}?(\d{4})年(\d{1,2})月(\d{1,2})日/;
   const m5 = text.match(regexCN);
   if (m5) return { start: `${m5[1]}-${pad(m5[2])}-${pad(m5[3])}`, end: `${m5[4]}-${pad(m5[5])}-${pad(m5[6])}` };
 
-  // 6. Short Chinese Dates (e.g., 8月20日 - 9月10日)
+  // 6. Short Chinese Dates
   const regexShortCN = /(\d{1,2})月(\d{1,2})日.{1,20}?(\d{1,2})月(\d{1,2})日/;
   const m6 = text.match(regexShortCN);
   if (m6) {
@@ -107,10 +107,9 @@ async function parseGenshin() {
       const text = extractTextFromContent(detail.data?.data?.post?.post?.content || '');
       
       const time = parseTime(text);
-      if (!time) { console.warn(`[GI] ⚠️ No date found in "${title}"`); continue; }
+      if (!time) continue;
 
       results.push({ id: `auto_gi_${pid}`, name: `${isBanner ? '🎴' : '🎯'} ${title}`, date: time.end, type: isBanner ? 'banner' : 'event', auto: true });
-      log(`[GI] ✅ Added: "${title}" -> ends ${time.end}`);
     }
   } catch (e) { console.warn(`[GI] ❌ Scrape failed: ${e.message}`); }
   return results;
@@ -137,10 +136,9 @@ async function parseZZZ() {
       const text = extractTextFromContent(detail.data?.data?.post?.post?.content || '');
       
       const time = parseTime(text);
-      if (!time) { console.warn(`[ZZZ] ⚠️ No date found in "${title}"`); continue; }
+      if (!time) continue;
 
       results.push({ id: `auto_zzz_${pid}`, name: `${isBanner ? '🎴' : '🎯'} ${title}`, date: time.end, type: isBanner ? 'banner' : 'event', auto: true });
-      log(`[ZZZ] ✅ Added: "${title}" -> ends ${time.end}`);
     }
   } catch (e) { console.warn(`[ZZZ] ❌ Scrape failed: ${e.message}`); }
   return results;
@@ -157,25 +155,14 @@ async function parseWW() {
     $('table').each((_, table) => {
       $(table).find('tr').each((_, tr) => {
           let rowText = '';
-          $(tr).find('td, th').each((_, td) => {
-              rowText += $(td).text() + ' ';
-          });
+          $(tr).find('td, th').each((_, td) => { rowText += $(td).text() + ' '; });
           rowText = rowText.replace(/\s+/g, ' ').trim();
 
           const time = parseTime(rowText);
           if (time) {
-            // Fandom WW Convene table structure typically places the exact banner name inside a bold tag or a specific link 
-            // inside the row. We will try to extract all readable string text before the dates
-            let possibleTitle = $(tr).find('b, a[title]').first().text().trim();
-            
-            // Fallback: If no bold text or link, just use the first column text
-            if(!possibleTitle || possibleTitle.length < 3) {
-                possibleTitle = $(tr).find('td').first().text().replace(/\n/g, '').trim();
-            }
-            
-            if (possibleTitle && !possibleTitle.includes('202') && possibleTitle.length > 2 && possibleTitle.length < 60) {
-               results.push({ id: `auto_ww_${encodeURIComponent(possibleTitle).substring(0, 10)}`, name: `🎴 ${possibleTitle}`, date: time.end, type: 'banner', auto: true });
-               log(`[WW] ✅ Added: "${possibleTitle}" -> ends ${time.end}`);
+            let title = $(tr).find('th, td, a, b').first().text().replace(/\n/g, '').trim();
+            if (title && !title.includes('202') && title.length < 50) {
+               results.push({ id: `auto_ww_${encodeURIComponent(title).substring(0, 10)}`, name: `🎴 ${title}`, date: time.end, type: 'banner', auto: true });
             }
           }
       });
@@ -187,6 +174,7 @@ async function parseWW() {
 async function parseAK() {
   const results = [];
   try {
+    log('[AK] Fetching EndfieldTools.dev...');
     const url = 'https://endfieldtools.dev/';
     const res = await axios.get(url, { headers: { ...BROWSER_HEADERS }, timeout: 15000 });
     const $ = cheerio.load(res.data);
@@ -211,7 +199,6 @@ async function parseAK() {
             id: `auto_ak_${encodeURIComponent(title).substring(0, 15)}`, name: `${isBanner ? '🎴' : '🧩'} ${title}`,
             date: time.end, type: isBanner ? 'banner' : 'event', auto: true
           });
-          log(`[AK] ✅ Added: "${title}" -> ends ${time.end}`);
         }
       }
     });
@@ -222,23 +209,31 @@ async function parseAK() {
 async function main() {
   console.log('🔄 Fetching banner/event data...');
   const [gi, zzz, ww, ak] = await Promise.all([ parseGenshin(), parseZZZ(), parseWW(), parseAK() ]);
-  console.log(`📊 Results — GI:${gi.length} ZZZ:${zzz.length} WW:${ww.length} AK:${ak.length}`);
+  console.log(`📊 Total Raw Results — GI:${gi.length} ZZZ:${zzz.length} WW:${ww.length} AK:${ak.length}`);
 
   const today = new Date().toISOString().split('T')[0];
 
+  // 🔴 Expiration filter enabled: Removes events that ended before today
+  const filterExpired = arr => arr.filter(e => e.date >= today);
+
   const data = {
     _meta: { updated: today, note: 'Auto-generated by updateBanners.js' },
-    gi: gi, zzz: zzz, ww: ww, ak: ak, 
+    gi: filterExpired(gi), 
+    zzz: filterExpired(zzz), 
+    ww: filterExpired(ww), 
+    ak: filterExpired(ak), 
   };
+  
+  const totalActiveItems = data.gi.length + data.zzz.length + data.ww.length + data.ak.length;
+  console.log(`📊 Active Events Saved — GI:${data.gi.length} ZZZ:${data.zzz.length} WW:${data.ww.length} AK:${data.ak.length}`);
 
-  const totalItems = gi.length + zzz.length + ww.length + ak.length;
-  if (totalItems === 0) {
-    console.warn('⚠️ All scrapers returned 0 results — NOT overwriting banners.json');
+  if (totalActiveItems === 0) {
+    console.warn('⚠️ All scrapers returned 0 ACTIVE results — NOT overwriting banners.json');
     process.exit(1);
   }
 
   fs.writeFileSync(OUTPUT, JSON.stringify(data, null, 2), 'utf-8');
-  console.log(`✅ banners.json written.`);
+  console.log(`✅ banners.json written successfully.`);
 }
 
 main().catch(err => {
