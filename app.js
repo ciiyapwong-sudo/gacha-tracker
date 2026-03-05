@@ -1,7 +1,7 @@
-// ════════════════════════════════════════════
-// ── TYPE DEFINITIONS (JSDoc — TS checking without a build step)
-// ── Enable: add  // @ts-check  at top, or open in VS Code
-// ════════════════════════════════════════════
+// ============================================
+// -- TYPE DEFINITIONS (JSDoc - TS checking without a build step)
+// -- Enable: add  // @ts-check  at top, or open in VS Code
+// ============================================
 
 // @ts-check
 
@@ -49,64 +49,64 @@
 /** @type {Game[]} */
 const BASE_GAMES = [
   {
-    id: 'ww', name: '鸣潮', icon: '🌊', cls: 'ww',
-    searchName: '鸣潮 Wuthering Waves',
-    profileDef: { level1: '联觉等级', level2: '索拉等级', currency: '星声', monthly: '月卡剩余', pulls: '余波珊瑚' },
+    id: 'ww', name: 'Wuthering Waves', icon: '🌊', cls: 'ww',
+    searchName: 'Wuthering Waves Wuthering Waves',
+    profileDef: { level1: 'Union Level', level2: 'SOL3 Phase', currency: 'Astrite', monthly: 'Monthly Card Left', pulls: 'Aftershocked Coral' },
     tasks: [
-      { id: 'ww_vitality', label: '活跃度（100）', tag: '活跃' },
-      { id: 'ww_wave', label: '消耗结晶波片', tag: '体力' },
-      { id: 'ww_nightmare', label: '梦魇拔除', tag: '战斗' },
-      { id: 'ww_echo', label: '残像聚落', tag: '声骸' },
+      { id: 'ww_vitality', label: 'Activity (100)', tag: 'Activity' },
+      { id: 'ww_wave', label: 'Consume Waveplate', tag: 'Stamina' },
+      { id: 'ww_nightmare', label: 'Nightmare', tag: 'Combat' },
+      { id: 'ww_echo', label: 'Echoes', tag: 'Combat' },
     ],
     weekly: [
-      { id: 'ww_w_boss1', label: '周本BOSS 1', tag: '周本' },
-      { id: 'ww_w_boss2', label: '周本BOSS 2', tag: '周本' },
-      { id: 'ww_w_boss3', label: '周本BOSS 3', tag: '周本' },
-      { id: 'ww_w_door', label: '千道门扉的异想', tag: '周常' },
-      { id: 'ww_w_oil', label: '买金装特级香油', tag: '商店' },
+      { id: 'ww_w_boss1', label: 'Weekly Boss 1', tag: 'Weekly' },
+      { id: 'ww_w_boss2', label: 'Weekly Boss 2', tag: 'Weekly' },
+      { id: 'ww_w_boss3', label: 'Weekly Boss 3', tag: 'Weekly' },
+      { id: 'ww_w_door', label: 'Illusive Realm', tag: 'Weekly' },
+      { id: 'ww_w_oil', label: 'Buy Special Oil', tag: 'Store' },
     ]
   },
   {
-    id: 'ak', name: '明日方舟：终末地', icon: '⚙️', cls: 'ak',
-    searchName: '明日方舟终末地 Arknights Endfield',
-    profileDef: { level1: '协议等级', level2: '基建进度', currency: '源石', monthly: '月卡剩余', pulls: '寻访凭证' },
+    id: 'ak', name: 'Arknights: Endfield', icon: '⚙️', cls: 'ak',
+    searchName: 'Arknights Endfield Arknights Endfield',
+    profileDef: { level1: 'Protocol Lv', level2: 'Base Progress', currency: 'Originite Prime', monthly: 'Monthly Card Left', pulls: 'Headhunting Permit' },
     tasks: [
-      { id: 'ak_sanity', label: '消耗耐力（理智）', tag: '体力' },
-      { id: 'ak_vitality', label: '活跃度（100）', tag: '活跃' },
-      { id: 'ak_storage', label: '仓储节点（武陵）', tag: '收集' },
+      { id: 'ak_sanity', label: 'Consume Stamina (Sanity)', tag: 'Stamina' },
+      { id: 'ak_vitality', label: 'Activity (100)', tag: 'Activity' },
+      { id: 'ak_storage', label: 'Storage Node (Wuling)', tag: 'Collect' },
     ],
     cyclic: [
-      { id: 'ak_c2_env', label: '环境监测', tag: '每2天', days: 2 },
-      { id: 'ak_c4_map', label: '全地图收集资源', tag: '每4天', days: 4 },
+      { id: 'ak_c2_env', label: 'Env Monitoring', tag: 'Every 2 day(s)', days: 2 },
+      { id: 'ak_c4_map', label: 'Full MapCollect Resources', tag: 'Every 4 day(s)', days: 4 },
     ]
   },
   {
-    id: 'gi', name: '原神', icon: '✦', cls: 'gi',
-    searchName: '原神 Genshin Impact',
-    profileDef: { level1: '冒险等阶', level2: '世界等级', currency: '原石', monthly: '空月祝福', pulls: '纠缠之缘' },
+    id: 'gi', name: 'Genshin Impact', icon: '✦', cls: 'gi',
+    searchName: 'Genshin Impact Genshin Impact',
+    profileDef: { level1: 'Adventurer Rank', level2: 'World Level', currency: 'Primogems', monthly: 'Blessing of the Welkin Moon', pulls: 'Intertwined Fate' },
     tasks: [
-      { id: 'gi_commissions', label: '每日委托（4个）', tag: '日常' },
-      { id: 'gi_commission_claim', label: '领取冒险者协会', tag: '日常' },
-      { id: 'gi_resin', label: '消耗原粹树脂（160）', tag: '体力' },
+      { id: 'gi_commissions', label: 'Daily Commissions (4)', tag: 'Daily' },
+      { id: 'gi_commission_claim', label: 'Claim Adventurers Guild', tag: 'Daily' },
+      { id: 'gi_resin', label: 'Consume Original Resin (160)', tag: 'Stamina' },
     ],
     weekly: [
-      { id: 'gi_w_boss1', label: '周本BOSS 1', tag: '周本' },
-      { id: 'gi_w_boss2', label: '周本BOSS 2', tag: '周本' },
-      { id: 'gi_w_boss3', label: '周本BOSS 3', tag: '周本' },
+      { id: 'gi_w_boss1', label: 'Weekly Boss 1', tag: 'Weekly' },
+      { id: 'gi_w_boss2', label: 'Weekly Boss 2', tag: 'Weekly' },
+      { id: 'gi_w_boss3', label: 'Weekly Boss 3', tag: 'Weekly' },
     ],
-    abyss: { id: 'gi_abyss', label: '深境螺旋' }
+    abyss: { id: 'gi_abyss', label: 'Spiral Abyss' }
   },
   {
-    id: 'zzz', name: '绝区零', icon: '⚡', cls: 'zzz',
-    searchName: '绝区零 Zenless Zone Zero',
-    profileDef: { level1: '绳网等级', level2: '信誉度', currency: '菲林', monthly: '底片', pulls: '加密母带' },
+    id: 'zzz', name: 'Zenless Zone Zero', icon: '⚡', cls: 'zzz',
+    searchName: 'Zenless Zone Zero Zenless Zone Zero',
+    profileDef: { level1: 'Inter-Knot Level', level2: 'Reputation', currency: 'Polychromes', monthly: 'Monochrome', pulls: 'Encrypted Master Tape' },
     tasks: [
-      { id: 'zzz_battery', label: '消耗电量（200）', tag: '体力' },
-      { id: 'zzz_shop', label: '刮刮乐（招财猫）', tag: '商店' },
-      { id: 'zzz_vitality', label: '活跃度（4个）', tag: '活跃' },
+      { id: 'zzz_battery', label: 'Consume Battery Charge (200)', tag: 'Stamina' },
+      { id: 'zzz_shop', label: 'Scratch Card (Lucky Cat)', tag: 'Store' },
+      { id: 'zzz_vitality', label: 'Activity (4)', tag: 'Activity' },
     ],
     weekly: [
-      { id: 'zzz_w_hollow', label: '空洞零号', tag: '周常' },
+      { id: 'zzz_w_hollow', label: 'Hollow Zero', tag: 'Weekly' },
     ]
   }
 ];
@@ -136,9 +136,9 @@ function getAllGames() {
   };
 }
 
-// ════════════════════════════════════════════
-// ── DATA: AUTO_BANNERS — loaded from banners.json at startup ──
-// ════════════════════════════════════════════
+// ============================================
+// -- DATA: AUTO_BANNERS - loaded from banners.json at startup --
+// ============================================
 
 /** @type {Record<string, GameEvent[]>} */
 const AUTO_BANNERS = { ww: [], ak: [], gi: [], zzz: [] };
@@ -147,7 +147,7 @@ const AUTO_BANNERS = { ww: [], ak: [], gi: [], zzz: [] };
 const EVENT_DETAIL_MAP = {};
 // NOTE: populated inside fetch().then() below, after banners.json has loaded
 
-// ── Event detail (inline) ──
+// -- Event detail (inline) --
 /**
  * @param {string} eid
  * @param {string} gid
@@ -179,7 +179,7 @@ function openEvModal(eid, gid) {
   detail.className = 'event-detail';
   detail.setAttribute('data-eid', eid);
 
-  const typeText = isBanner ? '🎴 限定卡池 / 寻访' : '🎯 限时活动';
+  const typeText = isBanner ? '🎴 Limited Banners / Wishes' : '🎯 Time-Limited Events';
   const descHtml = ev.desc ? '<div class="event-detail-desc">' + ev.desc + '</div>' : '';
   const rewardsHtml = rewardsArr.length
     ? '<div class="event-detail-rewards">' + rewardsArr.map(function (r) { return '<span>' + r + '</span>'; }).join('') + '</div>'
@@ -192,14 +192,14 @@ function openEvModal(eid, gid) {
     + '</div>'
     + descHtml
     + rewardsHtml
-    + '<div class="event-detail-countdown" style="color:' + cdColor + '">⏱ 剩余时间：' + countdownText(ev.date) + '</div>';
+    + '<div class="event-detail-countdown" style="color:' + cdColor + '">⏱ Time left: ' + countdownText(ev.date) + '</div>';
 
   item.insertAdjacentElement('afterend', detail);
 }
 function closeEvModal(e) { /* no-op (inline detail mode) */ }
 function closeEvModalBtn() { /* no-op (inline detail mode) */ }
 
-// Merge auto banners/events into state — skip expired, skip duplicates, clean old autos
+// Merge auto banners/events into state - skip expired, skip duplicates, clean old autos
 function mergeAutoBanners() {
   getAllGames().base.forEach(g => {
     /** @type {GameEvent[]} */
@@ -223,7 +223,7 @@ function getEvents(gid) { return /** @type {GameEvent[]} */ (state['events_' + g
 /** @param {string} gid @param {GameEvent[]} evs */
 function saveEvents(gid, evs) { state['events_' + gid] = evs; saveState(); }
 
-// ── State ──
+// -- State --
 /** @returns {Date} */
 function getServerNow() {
   return new Date(Date.now() - 4 * 3600 * 1000);
@@ -247,7 +247,7 @@ function deductMonthlyCard(profileKey, daysPassed, keptState) {
   if (daysPassed <= 0) return;
   const gid = profileKey.slice('profile_'.length);
   const game = getAllGames().all.find(x => x.id === gid);
-  const def = (game && game.profileDef) ? game.profileDef : { monthly: '月卡' };
+  const def = (game && game.profileDef) ? game.profileDef : { monthly: 'Monthly Card' };
   const profile = keptState[profileKey];
 
   if (profile && Array.isArray(profile.stats)) {
@@ -326,7 +326,7 @@ function saveState() {
 /** @param {string} tid */
 function toggleTask(tid) { dispatch({ type: 'TOGGLE_TASK', tid }); }
 
-// ── Cyclic task logic ──
+// -- Cyclic task logic --
 /** @param {string} tid @returns {string|null} */
 function getCyclicLastDone(tid) {
   return state['cyclic_' + tid + '_lastDone'] || null;
@@ -400,7 +400,7 @@ function resetAll() {
 }
 function closeOverlay() { document.getElementById('completionOverlay').classList.remove('show'); }
 
-// ── Banner / Event forms ──
+// -- Banner / Event forms --
 /** @param {string} gid */
 function toggleBannerForm(gid) {
   const f = document.getElementById('bnform_' + gid);
@@ -472,11 +472,11 @@ function deleteEvent(gid, eid) {
   saveEvents(gid, getEvents(gid).filter(e => e.id !== eid)); render();
 }
 
-// ════════════════════════════════════════════
-// ── CUSTOM TASK MANAGEMENT
-// ════════════════════════════════════════════
+// ============================================
+// -- CUSTOM TASK MANAGEMENT
+// ============================================
 
-// ── State accessors ──
+// -- State accessors --
 /** @param {string} gid @returns {Task[]} */
 function getCustomDailyDefs(gid) { const a = state['custom_daily_defs_' + gid]; return Array.isArray(a) ? a : []; }
 /** @param {string} gid @returns {WeeklyTask[]} */
@@ -486,7 +486,7 @@ function getHiddenDailyTasks(gid) { const a = state['hidden_daily_' + gid]; retu
 /** @param {string} gid @returns {string[]} */
 function getHiddenWeeklyTasks(gid) { const a = state['hidden_weekly_' + gid]; return Array.isArray(a) ? a : []; }
 
-// ── Confirm modal ──
+// -- Confirm modal --
 /** @type {(() => void) | null} */
 let _confirmCallback = null;
 /** 
@@ -498,7 +498,7 @@ function showConfirm(label, onConfirm) {
   const msgEl = document.getElementById('confirmMsg');
   if (msgEl) {
     msgEl.innerHTML =
-      '确定要删除任务 <strong>「' + label + '」</strong> 吗？<br><span style="font-size:0.82rem;color:var(--dim);margin-top:4px;display:block;">此操作无法撤销。</span>';
+      'Are you sure you want to delete task <strong>\'' + label + '\'</strong> ?<br><span style="font-size:0.82rem;color:var(--dim);margin-top:4px;display:block;">This action cannot be undone.</span>';
   }
   const overlay = document.getElementById('confirmOverlay');
   if (overlay) overlay.classList.add('show');
@@ -517,7 +517,7 @@ document.addEventListener('click', function (e) {
   if (e.target === document.getElementById('confirmOverlay')) closeConfirm();
 });
 
-// ── ADD daily task form ──
+// -- ADD daily task form --
 /** @param {string} gid */
 function toggleAddDailyForm(gid) {
   const f = document.getElementById('add_daily_form_' + gid);
@@ -544,14 +544,14 @@ function saveAddDailyTask(gid) {
   const tagInp = /** @type {HTMLInputElement | null} */ (document.getElementById('add_daily_tag_' + gid));
   const label = inp ? inp.value.trim() : '';
   if (!label) { if (inp) inp.focus(); return; }
-  const tag = (tagInp ? tagInp.value.trim() : '') || '自定义';
+  const tag = (tagInp ? tagInp.value.trim() : '') || 'Custom';
   const defs = getCustomDailyDefs(gid);
   defs.push({ id: 'cd_' + gid + '_' + Date.now(), label, tag });
   state['custom_daily_defs_' + gid] = defs;
   saveState(); closeAddDailyForm(gid); render();
 }
 
-// ── ADD weekly task form ──
+// -- ADD weekly task form --
 /** @param {string} gid */
 function toggleAddWeeklyForm(gid) {
   const f = document.getElementById('add_weekly_form_' + gid);
@@ -578,14 +578,14 @@ function saveAddWeeklyTask(gid) {
   const tagInp = /** @type {HTMLInputElement | null} */ (document.getElementById('add_weekly_tag_' + gid));
   const label = inp ? inp.value.trim() : '';
   if (!label) { if (inp) inp.focus(); return; }
-  const tag = (tagInp ? tagInp.value.trim() : '') || '周常';
+  const tag = (tagInp ? tagInp.value.trim() : '') || 'Weekly';
   const defs = getCustomWeeklyDefs(gid);
   defs.push({ id: 'cw_' + gid + '_' + Date.now(), label, tag });
   state['custom_weekly_defs_' + gid] = defs;
   saveState(); closeAddWeeklyForm(gid); render();
 }
 
-// ── DELETE daily task ──
+// -- DELETE daily task --
 // For built-in tasks: hide by adding tid to hidden list
 // For custom tasks: remove from defs
 /** @param {string} gid @param {string} tid @param {string} label */
@@ -605,7 +605,7 @@ function requestDeleteDailyTask(gid, tid, label) {
   });
 }
 
-// ── DELETE weekly task ──
+// -- DELETE weekly task --
 /** @param {string} gid @param {string} tid @param {string} label */
 function requestDeleteWeeklyTask(gid, tid, label) {
   showConfirm(label, () => {
@@ -625,7 +625,7 @@ function requestDeleteWeeklyTask(gid, tid, label) {
 }
 
 
-// ── Dynamic labels ──
+// -- Dynamic labels --
 /** @param {string=} type @returns {string} */
 function getDynamicLabel(type) {
   return type || '';
@@ -635,7 +635,7 @@ function getWeeklyDynamicLabel(type) {
   return type || '';
 }
 
-// ── Helpers ──
+// -- Helpers --
 /** @param {string} dateStr @returns {number} ms timestamp of 4AM day after dateStr */
 function getExpireMs(dateStr) {
   // Events expire at 4AM the day after their end date
@@ -659,21 +659,21 @@ function urgencyClass(dateStr) {
 /** @param {string} dateStr @returns {string} human-readable countdown */
 function countdownText(dateStr) {
   const msLeft = getExpireMs(dateStr) - Date.now();
-  if (msLeft <= 0) return '已结束';
+  if (msLeft <= 0) return 'Ended';
   const totalSecs = Math.floor(msLeft / 1000);
   const d = Math.floor(totalSecs / 86400);
   const h = Math.floor((totalSecs % 86400) / 3600);
   const m = Math.floor((totalSecs % 3600) / 60);
-  if (d >= 1) return d + '天 ' + h + '时 ' + m + '分';
+  if (d >= 1) return d + ' day(s) ' + h + 'h ' + m + 'm';
   const s = totalSecs % 60;
-  if (h > 0) return h + '时 ' + m + '分';
-  return m + '分 ' + s + '秒';
+  if (h > 0) return h + 'h ' + m + 'm';
+  return m + 'm ' + s + 's';
 }
 
-// ── Weekly reset logic (resets Monday 4AM) ──
-// ════════════════════════════════════════════
-// ── RESET SYSTEM — unified reset key factory
-// ════════════════════════════════════════════
+// -- Weekly reset logic (resets Monday 4AM) --
+// ============================================
+// -- RESET SYSTEM - unified reset key factory
+// ============================================
 
 /**
  * @typedef {{ type: 'daily'|'weekly'|'bimonthly', resetHour?: number, resetDay?: number }} ResetConfig
@@ -682,7 +682,7 @@ function countdownText(dateStr) {
 
 /**
  * Factory that creates a reset system for any period type.
- * Centralises all reset-boundary logic — daily, weekly, bimonthly all use the same pattern.
+ * Centralises all reset-boundary logic - daily, weekly, bimonthly all use the same pattern.
  * @param {ResetConfig} config
  * @returns {ResetSystem}
  */
@@ -735,9 +735,9 @@ function createResetSystem(config) {
 
   function getResetLabel() {
     const days = getDaysUntilReset();
-    if (days === 0) return '今日重置';
-    if (days === 1) return '明天重置';
-    return '还剩 ' + days + ' 天重置';
+    if (days === 0) return 'Resets Today';
+    if (days === 1) return 'Resets Tomorrow';
+    return 'Resets in ' + days + ' days';
   }
 
   return { getKey, getDaysUntilReset, getResetLabel };
@@ -767,7 +767,7 @@ function getWeeklyProgress(game) {
 }
 function getDaysUntilMonday() { return weeklyReset.getDaysUntilReset(); }
 
-// ── Abyss (深境螺旋) reset logic — resets 1st and 16th of each month ──
+// -- Abyss (Spiral Abyss) reset logic - resets 1st and 16th of each month --
 function getAbyssKey() { return bimonthlyReset.getKey(); }
 function toggleAbyss(tid) { dispatch({ type: 'TOGGLE_ABYSS', tid }); }
 function isAbyssDone(tid) {
@@ -775,7 +775,7 @@ function isAbyssDone(tid) {
 }
 function getAbyssResetLabel() { return bimonthlyReset.getResetLabel(); }
 
-// ── Render helpers ──
+// -- Render helpers --
 /** @param {GameEvent} e @param {string} gid @param {boolean} isBanner @returns {string} */
 function renderItem(e, gid, isBanner) {
   const urg = urgencyClass(e.date);
@@ -786,11 +786,11 @@ function renderItem(e, gid, isBanner) {
     + '<div class="event-dot"></div>'
     + '<span class="event-name">' + e.name + '</span>'
     + '<span class="event-countdown">' + countdownText(e.date) + '</span>'
-    + '<button class="event-delete" onclick="event.stopPropagation();deleteEvent(\'' + gid + '\',\'' + e.id + '\')" title="删除">×</button>'
+    + '<button class="event-delete" onclick="event.stopPropagation();deleteEvent(\'' + gid + '\',\'' + e.id + '\')" title="Delete">x</button>'
     + '</div>';
 }
 
-// ── Profile management ──
+// -- Profile management --
 /** @param {string} gid */
 function openProfileModal(gid) {
   state.editingProfileGid = gid;
@@ -804,9 +804,9 @@ function addProfileStatRowLocal(btn) {
   const row = document.createElement('div');
   row.className = 'stat-row-grp';
   row.style.marginBottom = '8px';
-  row.innerHTML = '<input type="text" class="modal-input stat-key" placeholder="标签" style="width:70px; flex-shrink:0">'
-    + '<input type="text" class="modal-input stat-val" placeholder="数值" style="flex:1">'
-    + '<button class="task-del-btn" style="opacity:1; padding: 0 8px;" onclick="this.parentElement.remove()" title="删除">×</button>';
+  row.innerHTML = '<input type="text" class="modal-input stat-key" placeholder="Label" style="width:70px; flex-shrink:0">'
+    + '<input type="text" class="modal-input stat-val" placeholder="Value" style="flex:1">'
+    + '<button class="task-del-btn" style="opacity:1; padding: 0 8px;" onclick="this.parentElement.remove()" title="Delete">x</button>';
   statsList.appendChild(row);
 }
 
@@ -896,8 +896,8 @@ function saveProfileFromModal(gid) {
 /** @param {Game} game */
 function renderProfileCard(game) {
   if (!game.builtIn && !state['profile_' + game.id]) return ''; // Only show for built-in or if custom has data
-  const def = game.profileDef || { level1: '等级1', level2: '等级2', currency: '资源', monthly: '月卡', pulls: '抽卡' };
-  const p = state['profile_' + game.id] || { name: game.name, uid: '未设置' };
+  const def = game.profileDef || { level1: 'Level 1', level2: 'Level 2', currency: 'Resources', monthly: 'Monthly Card', pulls: 'Pulls' };
+  const p = state['profile_' + game.id] || { name: game.name, uid: 'Not set' };
 
   let avatarHtml = '<div class="profile-avatar">' + game.icon + '</div>';
   if (p.avatar) {
@@ -925,9 +925,9 @@ function renderProfileCard(game) {
     let editStatsHtml = '<div class="profileStatsList" style="margin-bottom: 12px; max-height: 200px; overflow-y: auto; padding-right: 4px;">';
     statsToRender.forEach(s => {
       editStatsHtml += '<div class="stat-row-grp" style="margin-bottom:8px;">'
-        + '<input type="text" class="modal-input stat-key" placeholder="标签" style="width:70px; flex-shrink:0; padding:6px 8px;" value="' + (s.label.replace(/"/g, '&quot;')) + '">'
-        + '<input type="text" class="modal-input stat-val" placeholder="数值" style="flex:1; padding:6px 8px;" value="' + (s.value.replace(/"/g, '&quot;')) + '">'
-        + '<button class="task-del-btn" style="opacity:1; padding: 0 8px;" onclick="this.parentElement.remove()" title="删除">×</button>'
+        + '<input type="text" class="modal-input stat-key" placeholder="Label" style="width:70px; flex-shrink:0; padding:6px 8px;" value="' + (s.label.replace(/"/g, '&quot;')) + '">'
+        + '<input type="text" class="modal-input stat-val" placeholder="Value" style="flex:1; padding:6px 8px;" value="' + (s.value.replace(/"/g, '&quot;')) + '">'
+        + '<button class="task-del-btn" style="opacity:1; padding: 0 8px;" onclick="this.parentElement.remove()" title="Delete">x</button>'
         + '</div>';
     });
     editStatsHtml += '</div>';
@@ -938,25 +938,25 @@ function renderProfileCard(game) {
       + '<div style="display:flex; gap:12px; margin-bottom:16px;">'
       + '<div class="profile-avatar-upload" style="width:50px; height:50px; min-width:50px;" onclick="document.getElementById(\'inlineProfileAvatarFile_' + game.id + '\').click()">'
       + avatarPreviewObj
-      + '<div class="upload-hint" style="font-size:0.65rem;">头像</div>'
+      + '<div class="upload-hint" style="font-size:0.65rem;">Avatar</div>'
       + '</div>'
       + '<input type="file" id="inlineProfileAvatarFile_' + game.id + '" accept="image/*" style="display:none" onchange="handleProfileAvatarUploadLocal(event, \'' + game.id + '\')">'
 
       + '<div style="flex:1; display:flex; flex-direction:column; gap:8px;">'
-      + '<input type="text" class="modal-input profileNameInput" placeholder="游戏昵称" style="padding:6px 10px; font-size:0.9rem;" value="' + (p.name || game.name) + '">'
-      + '<input type="text" class="modal-input profileUidInput" placeholder="账号 UID" style="padding:6px 10px; font-size:0.8rem;" value="' + (p.uid || '') + '">'
+      + '<input type="text" class="modal-input profileNameInput" placeholder="Game Nickname" style="padding:6px 10px; font-size:0.9rem;" value="' + (p.name || game.name) + '">'
+      + '<input type="text" class="modal-input profileUidInput" placeholder="Account UID" style="padding:6px 10px; font-size:0.8rem;" value="' + (p.uid || '') + '">'
       + '</div>'
       + '</div>'
 
       + editStatsHtml
 
       + '<div style="margin-bottom: 12px; text-align: center;">'
-      + '<button class="btn-ghost" style="font-size: 0.8rem; width:100%; padding: 6px 0;" onclick="addProfileStatRowLocal(this)">+ 添加新项</button>'
+      + '<button class="btn-ghost" style="font-size: 0.8rem; width:100%; padding: 6px 0;" onclick="addProfileStatRowLocal(this)">+ Add new stat</button>'
       + '</div>'
 
       + '<div style="display:flex; gap:8px; justify-content: flex-end;">'
-      + '<button class="add-task-form-cancel" style="padding:6px 16px; font-size:0.85rem;" onclick="closeProfileModal()">取消</button>'
-      + '<button class="auth-btn signin" style="padding:6px 16px; font-size:0.85rem;" onclick="saveProfileFromModal(\'' + game.id + '\')">保存</button>'
+      + '<button class="add-task-form-cancel" style="padding:6px 16px; font-size:0.85rem;" onclick="closeProfileModal()">Cancel</button>'
+      + '<button class="auth-btn signin" style="padding:6px 16px; font-size:0.85rem;" onclick="saveProfileFromModal(\'' + game.id + '\')">Save</button>'
       + '</div>'
       + '</div>';
   }
@@ -977,16 +977,16 @@ function renderProfileCard(game) {
     + '<div class="profile-info">'
     + '<div style="display:flex; align-items:center;">'
     + '<div class="profile-name">' + (p.name || game.name) + '</div>'
-    + '<button class="profile-edit-btn" onclick="openProfileModal(\'' + game.id + '\')" title="编辑档案">✎</button>'
+    + '<button class="profile-edit-btn" onclick="openProfileModal(\'' + game.id + '\')" title="Edit Profile">✎</button>'
     + '</div>'
-    + '<div class="profile-uid">UID: ' + (p.uid || '未设置') + '</div>'
+    + '<div class="profile-uid">UID: ' + (p.uid || 'Not set') + '</div>'
     + '</div>'
     + '</div>'
     + statsHtml
     + '</div>';
 }
 
-// ── Render ──
+// -- Render --
 /** @param {Game} game */
 function renderGameCard(game) {
   const hiddenD = getHiddenDailyTasks(game.id);
@@ -1029,7 +1029,7 @@ function renderGameCard(game) {
       + '<div class="checkbox">' + svgTick + '</div>'
       + '<span class="task-label">' + label + '</span>'
       + '<span class="task-tag" style="background:rgba(255,255,255,0.05);color:var(--dim)">' + t.tag + '</span>'
-      + '<button class="task-del-btn" onclick="event.stopPropagation();requestDeleteDailyTask(\'' + game.id + '\',\'' + t.id + '\',\'' + safeLabel + '\')" title="删除任务">×</button>'
+      + '<button class="task-del-btn" onclick="event.stopPropagation();requestDeleteDailyTask(\'' + game.id + '\',\'' + t.id + '\',\'' + safeLabel + '\')" title="Delete Task">x</button>'
       + '</div>';
   }).join('');
 
@@ -1037,17 +1037,17 @@ function renderGameCard(game) {
   const addDailyFormHtml = '<div class="add-task-row">'
     + '<button class="add-task-trigger" onclick="toggleAddDailyForm(\'' + game.id + '\')">'
     + '<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>'
-    + ' 添加日常任务'
+    + ' Add Daily Task'
     + '</button>'
     + '</div>'
     + '<div class="add-task-form-wrap" id="add_daily_form_' + game.id + '">'
-    + '<input type="text" class="inp-label" id="add_daily_inp_' + game.id + '" placeholder="任务名称…" onkeydown="if(event.key===\'Enter\')saveAddDailyTask(\'' + game.id + '\')">'
-    + '<input type="text" class="inp-tag"   id="add_daily_tag_' + game.id + '" placeholder="标签"     onkeydown="if(event.key===\'Enter\')saveAddDailyTask(\'' + game.id + '\')">'
-    + '<button class="add-task-form-save"   onclick="saveAddDailyTask(\'' + game.id + '\')">保存</button>'
-    + '<button class="add-task-form-cancel" onclick="closeAddDailyForm(\'' + game.id + '\')">取消</button>'
+    + '<input type="text" class="inp-label" id="add_daily_inp_' + game.id + '" placeholder="Task name..." onkeydown="if(event.key===\'Enter\')saveAddDailyTask(\'' + game.id + '\')">'
+    + '<input type="text" class="inp-tag"   id="add_daily_tag_' + game.id + '" placeholder="Label"     onkeydown="if(event.key===\'Enter\')saveAddDailyTask(\'' + game.id + '\')">'
+    + '<button class="add-task-form-save"   onclick="saveAddDailyTask(\'' + game.id + '\')">Save</button>'
+    + '<button class="add-task-form-cancel" onclick="closeAddDailyForm(\'' + game.id + '\')">Cancel</button>'
     + '</div>';
 
-  // ── Weekly tasks ──
+  // -- Weekly tasks --
   let weeklyHtml = '';
   if (allWeeklyTasks.length > 0) {
     const wp = getWeeklyProgress(game);
@@ -1061,55 +1061,55 @@ function renderGameCard(game) {
         + '<div class="checkbox">' + svgCheck + '</div>'
         + '<span class="task-label">' + label + '</span>'
         + '<span class="task-tag" style="background:rgba(255,255,255,0.05);color:var(--dim)">' + t.tag + '</span>'
-        + '<button class="weekly-task-del-btn" onclick="event.stopPropagation();requestDeleteWeeklyTask(\'' + game.id + '\',\'' + t.id + '\',\'' + safeLabel + '\')" title="删除任务">×</button>'
+        + '<button class="weekly-task-del-btn" onclick="event.stopPropagation();requestDeleteWeeklyTask(\'' + game.id + '\',\'' + t.id + '\',\'' + safeLabel + '\')" title="Delete Task">x</button>'
         + '</div>';
     }).join('');
 
     const addWeeklyFormHtml = '<div class="add-weekly-task-row">'
       + '<button class="add-task-trigger" onclick="toggleAddWeeklyForm(\'' + game.id + '\')">'
       + '<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>'
-      + ' 添加周常任务'
+      + ' Add Weekly Task'
       + '</button>'
       + '</div>'
       + '<div class="add-task-form-wrap" id="add_weekly_form_' + game.id + '">'
-      + '<input type="text" class="inp-label" id="add_weekly_inp_' + game.id + '" placeholder="任务名称…" onkeydown="if(event.key===\'Enter\')saveAddWeeklyTask(\'' + game.id + '\')">'
-      + '<input type="text" class="inp-tag"   id="add_weekly_tag_' + game.id + '" placeholder="标签"     onkeydown="if(event.key===\'Enter\')saveAddWeeklyTask(\'' + game.id + '\')">'
-      + '<button class="add-task-form-save"   onclick="saveAddWeeklyTask(\'' + game.id + '\')">保存</button>'
-      + '<button class="add-task-form-cancel" onclick="closeAddWeeklyForm(\'' + game.id + '\')">取消</button>'
+      + '<input type="text" class="inp-label" id="add_weekly_inp_' + game.id + '" placeholder="Task name..." onkeydown="if(event.key===\'Enter\')saveAddWeeklyTask(\'' + game.id + '\')">'
+      + '<input type="text" class="inp-tag"   id="add_weekly_tag_' + game.id + '" placeholder="Label"     onkeydown="if(event.key===\'Enter\')saveAddWeeklyTask(\'' + game.id + '\')">'
+      + '<button class="add-task-form-save"   onclick="saveAddWeeklyTask(\'' + game.id + '\')">Save</button>'
+      + '<button class="add-task-form-cancel" onclick="closeAddWeeklyForm(\'' + game.id + '\')">Cancel</button>'
       + '</div>';
 
     weeklyHtml = '<div class="weekly-section">'
       + '<div class="sub-section-header">'
-      + '<span class="sub-section-title"><span>📅</span> 周常任务'
-      + '<span class="weekly-reset">· ' + wp.done + '/' + wp.total + ' · ' + resetLabel + '</span>'
+      + '<span class="sub-section-title"><span>📅</span> Weekly Tasks'
+      + '<span class="weekly-reset">- ' + wp.done + '/' + wp.total + ' - ' + resetLabel + '</span>'
       + '</span>'
       + '</div>'
       + weekTasksHtml
       + addWeeklyFormHtml
       + '</div>';
   } else {
-    // No weekly tasks yet — still show the add form
+    // No weekly tasks yet - still show the add form
     const addWeeklyFormHtml = '<div class="add-weekly-task-row">'
       + '<button class="add-task-trigger" onclick="toggleAddWeeklyForm(\'' + game.id + '\')">'
       + '<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>'
-      + ' 添加周常任务'
+      + ' Add Weekly Task'
       + '</button>'
       + '</div>'
       + '<div class="add-task-form-wrap" id="add_weekly_form_' + game.id + '">'
-      + '<input type="text" class="inp-label" id="add_weekly_inp_' + game.id + '" placeholder="任务名称…" onkeydown="if(event.key===\'Enter\')saveAddWeeklyTask(\'' + game.id + '\')">'
-      + '<input type="text" class="inp-tag"   id="add_weekly_tag_' + game.id + '" placeholder="标签"     onkeydown="if(event.key===\'Enter\')saveAddWeeklyTask(\'' + game.id + '\')">'
-      + '<button class="add-task-form-save"   onclick="saveAddWeeklyTask(\'' + game.id + '\')">保存</button>'
-      + '<button class="add-task-form-cancel" onclick="closeAddWeeklyForm(\'' + game.id + '\')">取消</button>'
+      + '<input type="text" class="inp-label" id="add_weekly_inp_' + game.id + '" placeholder="Task name..." onkeydown="if(event.key===\'Enter\')saveAddWeeklyTask(\'' + game.id + '\')">'
+      + '<input type="text" class="inp-tag"   id="add_weekly_tag_' + game.id + '" placeholder="Label"     onkeydown="if(event.key===\'Enter\')saveAddWeeklyTask(\'' + game.id + '\')">'
+      + '<button class="add-task-form-save"   onclick="saveAddWeeklyTask(\'' + game.id + '\')">Save</button>'
+      + '<button class="add-task-form-cancel" onclick="closeAddWeeklyForm(\'' + game.id + '\')">Cancel</button>'
       + '</div>';
     weeklyHtml = '<div class="weekly-section">'
       + '<div class="sub-section-header">'
-      + '<span class="sub-section-title"><span>📅</span> 周常任务</span>'
+      + '<span class="sub-section-title"><span>📅</span> Weekly Tasks</span>'
       + '</div>'
       + addWeeklyFormHtml
       + '</div>';
   }
 
-  // ── Cyclic section ──
+  // -- Cyclic section --
   let cyclicSectionHtml = '';
   if (game.cyclic && game.cyclic.length > 0) {
     const svgCyc = '<svg class="checkmark" width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
@@ -1118,23 +1118,23 @@ function renderGameCard(game) {
       const doneCyc = isCyclicDone(t.id);
       const daysLeft = getCyclicDaysUntilDue(t);
       const subLabel = (!due && daysLeft > 0)
-        ? '<span class="cyclic-countdown">' + daysLeft + '天后</span>' : '';
+        ? '<span class="cyclic-countdown">' + daysLeft + ' day(s) later</span>' : '';
       return '<div class="weekly-task cyclic-task' + (doneCyc ? ' done' : '') + '" data-cid="' + t.id + '" onclick="toggleCyclic(this.dataset.cid)">'
         + '<div class="checkbox">' + svgCyc + '</div>'
         + '<span class="task-label">' + t.label + '</span>'
         + subLabel
-        + '<span class="task-tag cyclic-tag">每' + t.days + '天</span>'
+        + '<span class="task-tag cyclic-tag">Every ' + t.days + ' day(s)</span>'
         + '</div>';
     }).join('');
     cyclicSectionHtml = '<div class="weekly-section cyclic-section">'
       + '<div class="sub-section-header">'
-      + '<span class="sub-section-title"><span>🔄</span> 定时任务</span>'
+      + '<span class="sub-section-title"><span>🔄</span> Cyclic Tasks</span>'
       + '</div>'
       + cyclicItems
       + '</div>';
   }
 
-  // ── Abyss section ──
+  // -- Abyss section --
   let abyssHtml = '';
   if (game.abyss) {
     const ab = game.abyss;
@@ -1143,24 +1143,24 @@ function renderGameCard(game) {
     const svgCheckAb = '<svg class="checkmark" width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
     abyssHtml = '<div class="weekly-section abyss-section">'
       + '<div class="sub-section-header">'
-      + '<span class="sub-section-title"><span>🌀</span> 深境螺旋'
-      + '<span class="weekly-reset">· ' + abResetLabel + '</span>'
+      + '<span class="sub-section-title"><span>🌀</span> Spiral Abyss'
+      + '<span class="weekly-reset">- ' + abResetLabel + '</span>'
       + '</span>'
       + '</div>'
       + '<div class="' + (abDone ? 'weekly-task done' : 'weekly-task') + '" data-abid="' + ab.id + '" onclick="toggleAbyss(this.dataset.abid)">'
       + '<div class="checkbox">' + svgCheckAb + '</div>'
       + '<span class="task-label">' + ab.label + '</span>'
-      + '<span class="task-tag" style="background:rgba(245,197,24,0.1);color:var(--gi)">双周</span>'
+      + '<span class="task-tag" style="background:rgba(245,197,24,0.1);color:var(--gi)">Bi-weekly</span>'
       + '</div>'
       + '</div>';
   }
 
   const todayStr = new Date().toISOString().split('T')[0];
   const bannersHtml = banners.length === 0
-    ? '<div class="no-events">暂无卡池数据</div>'
+    ? '<div class="no-events">No banner data</div>'
     : banners.map(e => renderItem(e, game.id, true)).join('');
   const eventsHtml = events.length === 0
-    ? '<div class="no-events">暂无活动数据</div>'
+    ? '<div class="no-events">No event data</div>'
     : events.map(e => renderItem(e, game.id, false)).join('');
 
   const hideEvents = !!state['hide_events_' + game.id];
@@ -1168,7 +1168,7 @@ function renderGameCard(game) {
   const removable = !game.builtIn;
   const cardCls = 'game-card ' + game.cls + (allDone ? ' all-done' : '');
   const deleteBtn = removable
-    ? '<button class="task-del-btn" style="opacity:1;margin-left:6px;" onclick="event.stopPropagation();requestDeleteGame(\'' + game.id + '\')" title="删除游戏">×</button>'
+    ? '<button class="task-del-btn" style="opacity:1;margin-left:6px;" onclick="event.stopPropagation();requestDeleteGame(\'' + game.id + '\')" title="Delete Game">x</button>'
     : '';
 
   // Events section (can be hidden per game)
@@ -1176,40 +1176,40 @@ function renderGameCard(game) {
   if (hideEvents) {
     eventsSectionHtml = '<div class="events-section events-section-hidden">'
       + '<div class="sub-section-header">'
-      + '<span class="sub-section-title"><span>🎯</span> 卡池 / 活动已隐藏</span>'
-      + '<button class="add-event-btn" onclick="toggleEventsHidden(\'' + game.id + '\')">显示区块</button>'
+      + '<span class="sub-section-title"><span>🎯</span> Banners / Events hidden</span>'
+      + '<button class="add-event-btn" onclick="toggleEventsHidden(\'' + game.id + '\')">Show Section</button>'
       + '</div>'
       + '</div>';
   } else {
     eventsSectionHtml = '<div class="events-section">'
       + '<div class="sub-section">'
       + '<div class="sub-section-header">'
-      + '<span class="sub-section-title"><span>🎴</span> 当前卡池 / 寻访</span>'
+      + '<span class="sub-section-title"><span>🎴</span> Current Banners</span>'
       + '<div style="display:flex;align-items:center;gap:6px;">'
-      + '<button class="add-banner-btn" onclick="toggleBannerForm(\'' + game.id + '\')">+ 手动添加</button>'
-      + '<button class="add-event-btn" style="opacity:0.7;" onclick="toggleEventsHidden(\'' + game.id + '\')">隐藏区块</button>'
+      + '<button class="add-banner-btn" onclick="toggleBannerForm(\'' + game.id + '\')">+ Add Manually</button>'
+      + '<button class="add-event-btn" style="opacity:0.7;" onclick="toggleEventsHidden(\'' + game.id + '\')">Hide Section</button>'
       + '</div>'
       + '</div>'
       + '<div class="event-list">' + bannersHtml + '</div>'
       + '<div class="event-form banner-form" id="bnform_' + game.id + '">'
-      + '<input type="text" id="bninput_' + game.id + '" placeholder="卡池 / 角色名称…" onkeydown="if(event.key===\'Enter\')addBanner(\'' + game.id + '\')">'
+      + '<input type="text" id="bninput_' + game.id + '" placeholder="Banner / Character name..." onkeydown="if(event.key===\'Enter\')addBanner(\'' + game.id + '\')">'
       + '<input type="date" id="bndate_' + game.id + '" min="' + todayStr + '">'
-      + '<button class="event-form-save" onclick="addBanner(\'' + game.id + '\')">保存</button>'
-      + '<button class="event-form-cancel" onclick="closeBannerForm(\'' + game.id + '\')">取消</button>'
+      + '<button class="event-form-save" onclick="addBanner(\'' + game.id + '\')">Save</button>'
+      + '<button class="event-form-cancel" onclick="closeBannerForm(\'' + game.id + '\')">Cancel</button>'
       + '</div>'
       + '</div>'
       + '<div class="sub-section-divider"></div>'
       + '<div class="sub-section">'
       + '<div class="sub-section-header">'
-      + '<span class="sub-section-title"><span>🎯</span> 限时活动</span>'
-      + '<button class="add-event-btn" onclick="toggleEventForm(\'' + game.id + '\')">+ 手动添加</button>'
+      + '<span class="sub-section-title"><span>🎯</span> Time-Limited Events</span>'
+      + '<button class="add-event-btn" onclick="toggleEventForm(\'' + game.id + '\')">+ Add Manually</button>'
       + '</div>'
       + '<div class="event-list">' + eventsHtml + '</div>'
       + '<div class="event-form" id="evform_' + game.id + '">'
-      + '<input type="text" id="evinput_' + game.id + '" placeholder="活动名称…" onkeydown="if(event.key===\'Enter\')addEvent(\'' + game.id + '\')">'
+      + '<input type="text" id="evinput_' + game.id + '" placeholder="Event name..." onkeydown="if(event.key===\'Enter\')addEvent(\'' + game.id + '\')">'
       + '<input type="date" id="evdate_' + game.id + '" min="' + todayStr + '">'
-      + '<button class="event-form-save" onclick="addEvent(\'' + game.id + '\')">保存</button>'
-      + '<button class="event-form-cancel" onclick="closeEventForm(\'' + game.id + '\')">取消</button>'
+      + '<button class="event-form-save" onclick="addEvent(\'' + game.id + '\')">Save</button>'
+      + '<button class="event-form-cancel" onclick="closeEventForm(\'' + game.id + '\')">Cancel</button>'
       + '</div>'
       + '</div>'
       + '</div>';
@@ -1225,7 +1225,7 @@ function renderGameCard(game) {
     + '</div>'
     + '<div class="tasks">' + tasksHtml + '</div>'
     + addDailyFormHtml
-    + '<div class="all-done-badge"><span class="pulse">✦</span> 所有任务已完成 — 干得漂亮！</div>'
+    + '<div class="all-done-badge"><span class="pulse">✦</span> All tasks completed - Great job!</div>'
     + weeklyHtml
     + cyclicSectionHtml
     + abyssHtml
@@ -1259,7 +1259,7 @@ function render() {
 
   const profilesContainer = document.getElementById('profilesContainer');
   if (profilesContainer) {
-    let profilesHtml = '<div class="section-title">游戏档案 PROFILES</div>';
+    let profilesHtml = '<div class="section-title">GAME PROFILES</div>';
     profilesHtml += getAllGames().all.map(g => renderProfileCard(g)).join('');
     profilesContainer.innerHTML = profilesHtml;
   }
@@ -1282,7 +1282,7 @@ function render() {
 }
 
 /**
- * Central action dispatcher — the only place that mutates state then re-renders.
+ * Central action dispatcher - the only place that mutates state then re-renders.
  * UI calls dispatch(action); logic updates state; render() reflects it.
  * @param {{ type: string, [key: string]: any }} action
  */
@@ -1330,7 +1330,7 @@ function toggleEventsHidden(gid) {
   render();
 }
 
-// ── Custom game management ──
+// -- Custom game management --
 function openAddGameModal() {
   var ov = document.getElementById('gameModalOverlay');
   if (!ov) return;
@@ -1368,7 +1368,7 @@ function saveCustomGameFromModal() {
 
   var all = getAllGames().all;
   if (all.some(function (g) { return g.id === id; })) {
-    alert('已存在相同 ID 的游戏：' + id + '，请换一个简称。');
+    alert('A game already exists with ID: ' + id + ', please choose another ID.');
     return;
   }
   var cls = 'g_' + id;
@@ -1392,7 +1392,7 @@ function requestDeleteGame(gid) {
   var all = getAllGames();
   var target = all.custom.find(function (g) { return g.id === gid; });
   if (!target) return;
-  showConfirm('删除游戏「' + target.name + '」', function () {
+  showConfirm('Delete Game \'' + target.name + '\'', function () {
     // remove from custom list
     var remaining = all.custom.filter(function (g) { return g.id !== gid; });
     setCustomGames(remaining);
@@ -1408,12 +1408,12 @@ function requestDeleteGame(gid) {
 }
 
 function updateDate() {
-  document.getElementById('dateDisplay').textContent = new Date().toLocaleDateString('zh-CN', {
+  document.getElementById('dateDisplay').textContent = new Date().toLocaleDateString('en', {
     weekday: 'short', month: 'long', day: 'numeric'
   });
 }
 
-// ── Reset countdown timer ──
+// -- Reset countdown timer --
 function updateResetTimer() {
   const now = new Date();
   const next4AM = new Date(now);
@@ -1435,7 +1435,7 @@ function updateResetTimer() {
 }
 setInterval(updateResetTimer, 1000);
 
-// ── Init ──
+// -- Init --
 fetch('banners.json')
   .then(r => r.json())
   .then(data => {
@@ -1456,10 +1456,10 @@ updateDate();
 updateResetTimer();
 
 
-// ── Smart ticker ──
+// -- Smart ticker --
 // Items > 1 day away: update every 60s (no need to show seconds)
 // Items < 1 day away: update every 1s (shows HH:MM:SS precision)
-// This avoids 4-game × N-events × 1s DOM updates when not needed.
+// This avoids 4-game x N-events x 1s DOM updates when not needed.
 
 const DAY_MS = 86400000;
 
@@ -1479,7 +1479,7 @@ function tickEventItem(el) {
   const next = el.nextElementSibling;
   if (next && next.classList && next.classList.contains('event-detail')) {
     const cd = next.querySelector('.event-detail-countdown');
-    if (cd) cd.textContent = '⏱ 剩余时间：' + countdownText(dateStr);
+    if (cd) cd.textContent = '⏱ Time left: ' + countdownText(dateStr);
   }
 }
 
@@ -1505,14 +1505,17 @@ setInterval(() => {
   });
 }, 60000);
 
-// ════════════════════════════════════════════
-// ── FIREBASE — see <script type="module"> below
-// ════════════════════════════════════════════
+// ============================================
+// -- FIREBASE - see <script type="module"> below
+// ============================================
 
-// ══════════════════════════════════════════════════════
-// ── PATCH REMINDER SYSTEM
-// ══════════════════════════════════════════════════════
+// ============================================
+// -- PATCH REMINDER SYSTEM
+// ============================================
 
 window.state = state;
 window.saveState = saveState;
 window.render = render;
+
+// Add this line at the very bottom of app.js
+window.mergeAutoBanners = mergeAutoBanners;
